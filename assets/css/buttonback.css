@@ -1,0 +1,24 @@
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: white;
+    font-size: 24px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.back-button i {
+    margin-right: 8px;
+    transition: transform 0.3s;
+}
+
+.back-button:hover {
+    color: hsl(218, 81%, 75%);
+}
+
+.back-button:hover i {
+    transform: translateX(-5px);
+}

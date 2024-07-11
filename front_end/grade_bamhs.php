@@ -8,7 +8,7 @@ if (!isset($_SESSION['user_id']) || ($_SESSION['role'] !== 'operator')) {
     exit;
 }
 
-// Query untuk mengambil data mahasiswa dari beberapa tabel
+// Query untuk mengambil data mahasiswa yang sudah mendaftar kegiatan
 $query = $conn->prepare("
     SELECT 
         u.user_id,  
@@ -16,9 +16,10 @@ $query = $conn->prepare("
         m.mahasiswa_id,
         m.npm,
         m.program_studi
-    FROM users u
-    LEFT JOIN mahasiswa m ON u.user_id = m.user_id
-    WHERE u.role = 'mahasiswa'
+    FROM ba_mahasiswa bm
+    JOIN mahasiswa m ON bm.mahasiswa_id = m.mahasiswa_id
+    JOIN users u ON m.user_id = u.user_id
+    WHERE bm.id_baitul IS NOT NULL
 ");
 $query->execute();
 $result = $query->get_result();
@@ -68,7 +69,6 @@ while ($row = $result->fetch_assoc()) {
         'status' => $status
     ];
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -79,7 +79,7 @@ while ($row = $result->fetch_assoc()) {
     <title>Input Nilai Mahasiswa Baitul Arqom</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/2.0.8/css/dataTables.bootstrap5.css" rel="stylesheet">
-    <link rel="shortcut icon" href=".7 ./assets/img/umb.png">
+    <link rel="shortcut icon" href="../assets/img/umb.png">
     <style>
         body {
             background-image: url('../assets/img/umbkampus4.png');
@@ -107,7 +107,6 @@ while ($row = $result->fetch_assoc()) {
         .display-4 {
             font-weight: bold; 
         }
-        
     </style>
 </head>
 <body>
@@ -138,16 +137,15 @@ while ($row = $result->fetch_assoc()) {
                             <tbody>
                                 <?php foreach ($data as $mahasiswa): ?>
                                     <tr>
-                                        <td><?= ($mahasiswa['nama']); ?></td>
-                                        <td><?= ($mahasiswa['npm']); ?></td>
-                                        <td><?= ($mahasiswa['prodi']); ?></td>
-                                        <td><?= ($mahasiswa['presensi']); ?></td>
-                                        <td><?= ($mahasiswa['baca_tulis_alquran']); ?></td>
-                                        <td><?= ($mahasiswa['al_islam_kemuh']); ?></td>
-                                        <td><?= ($mahasiswa['status']); ?></td>
+                                        <td><?= htmlspecialchars($mahasiswa['nama']); ?></td>
+                                        <td><?= htmlspecialchars($mahasiswa['npm']); ?></td>
+                                        <td><?= htmlspecialchars($mahasiswa['prodi']); ?></td>
+                                        <td><?= htmlspecialchars($mahasiswa['presensi']); ?></td>
+                                        <td><?= htmlspecialchars($mahasiswa['baca_tulis_alquran']); ?></td>
+                                        <td><?= htmlspecialchars($mahasiswa['al_islam_kemuh']); ?></td>
+                                        <td><?= htmlspecialchars($mahasiswa['status']); ?></td>
                                         <td>
                                             <button class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#inputNilaiModal' data-id='<?= htmlspecialchars($mahasiswa['mahasiswa_id']); ?>'>Input Nilai</button>
-                                            </form>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

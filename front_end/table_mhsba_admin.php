@@ -11,7 +11,7 @@ if (!isset($_SESSION['user_id']) || ($_SESSION['role'] !== 'admin')) {
 // Query untuk mengambil data mahasiswa dari beberapa tabel
 $query = $conn->prepare("
     SELECT 
-        ba_mahasiswa.id, 
+        ba_mahasiswa.id_baitul, 
         ba_mahasiswa.mahasiswa_id, 
         mahasiswa.npm, 
         mahasiswa.program_studi, 

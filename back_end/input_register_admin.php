@@ -46,7 +46,7 @@ if (isset($_POST['register'])) {
 
                 echo "<script>
                         alert('Add User berhasil!!');
-                        window.location.href = '../front_end/register_admin.php';
+                        window.location.href = '../back_end/logout.php';
                     </script>";
             } else {
                 echo "<script>

@@ -94,12 +94,8 @@
                             <article class="form-outline mb-2">
                                 <label class="form-label form-label-white letter-spacing d-flex" for="password" style="font-family: 'Open Sans', Times, serif;">Password:</label>
                                 <article class="input-group">
-                                <input type="password" id="new_password" name="new_password"
+                                <input type="password" id="password" name="password"
                                         class="form-control input-glass" aria-describedby="passwordHelpBlock" style="font-family: 'Open Sans', Times, serif;" placeholder="New Password" required>
-                                    <a class="input-group-text input-glass" style="text-decoration:none"
-                                        onclick="togglePasswordVisibility('new_password', 'toggleIcon2')">
-                                        <i id="toggleIcon2" class="nf nf-fa-eye_slash"></i>
-                                    </a>
                                 </article>
                                 <article id="passwordHelpBlock" class="col-auto form-text mb-4 d-flex" style="color:whitesmoke;">
                                     Must be 5-20 characters long.

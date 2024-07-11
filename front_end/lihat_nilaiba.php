@@ -1,6 +1,7 @@
 <?php
 session_start();
 include '../config.php';
+include '../function.php';
 include '../back_end/tagname.php';
 // Periksa apakah pengguna sudah login dan memiliki role 'mahasiswa'
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'mahasiswa') {
@@ -33,7 +34,7 @@ $data = [];
 if ($row = $result->fetch_assoc()) {
     // Dekripsi data sebelum ditambahkan ke array
     $nama_lengkap = $row['nama_lengkap'];
-    $npm = decryptValueAES192($row['npm'], $secret_key); // 
+    $npm = decryptValueAES192($row['npm'], $secret_key); 
     $presensi = decryptValueAES192($row['presensi'], $secret_key);
     $baca_tulis_alquran = decryptValueAES192($row['baca_tulis_alquran'], $secret_key);
     $al_islam_kemuh = decryptValueAES192($row['al_islam_kemuh'], $secret_key);

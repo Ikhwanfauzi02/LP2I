@@ -4,14 +4,6 @@ include '../config.php'; // File koneksi database
 include '../function.php'; // File fungsi enkripsi
 
 if (isset($_POST['submit'])) {
-    // Validasi CSRF Token
-    if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
-        echo "<script>
-                alert('Invalid CSRF Token');
-                window.location.href = 'login.php';
-            </script>";
-        exit;
-    }
 
     $username = filter_var($_POST['username'], FILTER_SANITIZE_SPECIAL_CHARS);
     $password = filter_var($_POST['password'], FILTER_SANITIZE_SPECIAL_CHARS);

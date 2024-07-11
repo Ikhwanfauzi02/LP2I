@@ -61,3 +61,28 @@ const headerActive = function () {
 }
 
 addEventOnElem(window, "scroll", headerActive);
+
+// Show Password
+
+function togglePasswordVisibility(passwordId, toggleIconId) {
+  // Toggle the type attribute using getAttribute() and setAttribute()
+  const password = document.getElementById(passwordId);
+  const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+  password.setAttribute('type', type);
+
+  // Toggle the eye slash icon
+  const toggleIcon = document.getElementById(toggleIconId);
+  if (type === 'password') {
+    toggleIcon.classList.remove('nf-fa-eye');
+    toggleIcon.classList.add('nf-fa-eye_slash');
+  } else {
+    toggleIcon.classList.remove('nf-fa-eye_slash');
+    toggleIcon.classList.add('nf-fa-eye');
+  }
+}
+
+// Usage example:
+togglePasswordVisibility('password', 'toggleIcon');
+togglePasswordVisibility('new_password', 'toggleIcon2');
+togglePasswordVisibility('confirm_password', 'toggleIcon3');
+

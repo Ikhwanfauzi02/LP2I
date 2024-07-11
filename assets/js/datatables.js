@@ -1,4 +1,4 @@
-//  Table scroll + buttons
+ //  Table scroll + buttons
 $(document).ready(function () {
     var table = $('#table-sb').DataTable({
         stateSave: true,
@@ -18,15 +18,11 @@ $(document).ready(function () {
 //  Table scroll + buttons
 $(document).ready(function () {
     var table = $('#table-s').DataTable({
-        stateSave: false,
+        stateSave: true,
         responsive: true,
-        colReorder: false,
+        colReorder: true,
         paging: false,
-        dom: 
-        "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
-        "<'row'<'col-md-12'tr>>" +
-        "<'row'<'col-md-5'i><'col-md-7'p>>",
-        buttons: [
+        TopStart : buttons [
             'copy', 'excel', 'pdf', 'colvis'
         ]
     });

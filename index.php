@@ -1,15 +1,13 @@
 <?php
-    session_start();
-    if (isset($_SESSION['user_id']) && $_SESSION['role'] === 'admin') {
-        header('Location: admin_beranda.php');
-    } elseif (isset($_SESSION['user_id']) && $_SESSION['role'] === 'operator') {
-        header('Location: admin_beranda.php');
-    } elseif (isset($_SESSION['user_id']) && $_SESSION['role'] === 'mahasiswa') {
-        header('Location: admin_beranda.php');
-    } elseif (isset($_SESSION['user_id']) && $_SESSION['role'] === 'dosen') {
-        header('Location: admin_beranda.php');
-        exit;
-    }
+session_start();
+if (isset($_SESSION['user_id']) && $_SESSION['role'] === 'admin') {
+    header('Location: admin_beranda.php');
+} elseif (isset($_SESSION['user_id']) && $_SESSION['role'] === 'operator') {
+    header('Location: admin_beranda.php');
+} elseif (isset($_SESSION['user_id']) && $_SESSION['role'] === 'mahasiswa') {
+    header('Location: admin_beranda.php');
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,7 +51,7 @@
     <header class="header" data-header>
         <div class="container">
 
-            <a href="#" class="logo" >LPPI-UMB</a>
+            <a href="#" class="logo">LPPI-UMB</a>
 
             <nav class="navbar" data-navbar>
 
@@ -122,15 +120,20 @@
                     <div class="hero-content">
 
                         <h1 class="h1 hero-title">
-                            Lembaga <span class="has-before">Pengkajian</span>Dan Pengamalan Islam (LPPI)
+                            Lembaga <span class="has-before">Pengkajian</span> Dan Pengamalan Islam (LPPI)
                         </h1>
                         <h1>
                             Universitas Muhammadiyah Bengkulu
                         </h1>
 
                         <p class="hero-text">
-                            Selamat Datang di Website Official LPPI UM Bengkulu
+                            Selamat Datang di Website Official LPPI UM Bengkulu.
                         </p>
+
+                        <p class="hero-text">
+                            Silahkan <span><a href="front_end/login.php">Login</a></span> terlebih dahulu
+                        </p>
+
 
                         <ul class="social-list">
 
@@ -163,8 +166,7 @@
                     </div>
 
                     <figure class="hero-banner">
-                        <img src="./assets/img/um-bengkulu.jpg" width="794" height="637" alt="hero banner"
-                            class="w-100">
+                        <img src="./assets/img/um-bengkulu.jpg" width="794" height="637" alt="hero banner" class="w-100">
                     </figure>
 
                 </div>
@@ -191,8 +193,7 @@
                             <div class="service-card" style="--color: 174, 77%, 50%">
 
                                 <div class="card-icon">
-                                    <img src="./assets/img/BBA.png" width="30" height="30"
-                                        loading="lazy" alt="service icon">
+                                    <img src="./assets/img/BBA.png" width="30" height="30" loading="lazy" alt="service icon">
                                 </div>
 
                                 <h3 class="h3">
@@ -206,8 +207,7 @@
                             <div class="service-card" style="--color: 267, 76%, 57%">
 
                                 <div class="card-icon">
-                                    <img src="./assets/img/service-icon-2.png" width="30" height="30"
-                                        loading="lazy" alt="service icon">
+                                    <img src="./assets/img/service-icon-2.png" width="30" height="30" loading="lazy" alt="service icon">
                                 </div>
 
                                 <h3 class="h3">
@@ -221,8 +221,7 @@
                             <div class="service-card" style="--color: 17, 100%, 68%">
 
                                 <div class="card-icon">
-                                    <img src="./assets/img/service-icon-3.png" width="30" height="30"
-                                        loading="lazy" alt="service icon">
+                                    <img src="./assets/img/service-icon-3.png" width="30" height="30" loading="lazy" alt="service icon">
                                 </div>
 
                                 <h3 class="h3">
@@ -236,8 +235,7 @@
                             <div class="service-card" style="--color: 343, 98%, 60%">
 
                                 <div class="card-icon">
-                                    <img src="./assets/img/service-icon-4.png" width="30" height="30"
-                                        loading="lazy" alt="service icon">
+                                    <img src="./assets/img/service-icon-4.png" width="30" height="30" loading="lazy" alt="service icon">
                                 </div>
 
                                 <h3 class="h3">
@@ -251,8 +249,7 @@
                             <div class="service-card" style="--color: 210, 100%, 53%">
 
                                 <div class="card-icon">
-                                    <img src="./assets/img/service-icon-5.png" width="30" height="30"
-                                        loading="lazy" alt="service icon">
+                                    <img src="./assets/img/service-icon-5.png" width="30" height="30" loading="lazy" alt="service icon">
                                 </div>
 
                                 <h3 class="h3">
@@ -266,8 +263,7 @@
                             <div class="service-card" style="--color: 157, 89%, 44%">
 
                                 <div class="card-icon">
-                                    <img src="./assets/img/service-icon-6.png" width="30" height="30"
-                                        loading="lazy" alt="service icon">
+                                    <img src="./assets/img/service-icon-6.png" width="30" height="30" loading="lazy" alt="service icon">
                                 </div>
 
                                 <h3 class="h3">
@@ -281,8 +277,7 @@
                             <div class="service-card" style="--color: 52, 98%, 50%">
 
                                 <div class="card-icon">
-                                    <img src="./assets/img/service-icon-7.png" width="30" height="30"
-                                        loading="lazy" alt="service icon">
+                                    <img src="./assets/img/service-icon-7.png" width="30" height="30" loading="lazy" alt="service icon">
                                 </div>
 
                                 <h3 class="h3">
@@ -296,8 +291,7 @@
                             <div class="service-card" style="--color: 52, 98%, 50%">
 
                                 <div class="card-icon">
-                                    <img src="./assets/img/service-icon-7.png" width="30" height="30"
-                                        loading="lazy" alt="service icon">
+                                    <img src="./assets/img/service-icon-7.png" width="30" height="30" loading="lazy" alt="service icon">
                                 </div>
 
                                 <h3 class="h3">
@@ -334,8 +328,7 @@
                             <div class="blog-card large">
 
                                 <figure class="card-banner">
-                                    <img src="./assets/img/blog-1.jpg" width="644" height="363"
-                                        loading="lazy" alt="Godaddy user flow solution..." class="img-cover">
+                                    <img src="./assets/img/blog-1.jpg" width="644" height="363" loading="lazy" alt="Godaddy user flow solution..." class="img-cover">
                                 </figure>
 
                                 <div class="card-content">
@@ -370,9 +363,7 @@
                             <div class="blog-card">
 
                                 <figure class="card-banner">
-                                    <img src="./assets/img/blog-2.jpg" width="202" height="162"
-                                        loading="lazy" alt="Godaddy user flow solution for every individual"
-                                        class="img-cover">
+                                    <img src="./assets/img/blog-2.jpg" width="202" height="162" loading="lazy" alt="Godaddy user flow solution for every individual" class="img-cover">
                                 </figure>
 
                                 <div class="card-content">
@@ -401,9 +392,7 @@
                             <div class="blog-card">
 
                                 <figure class="card-banner">
-                                    <img src="./assets/img/blog-3.png" width="202" height="162"
-                                        loading="lazy" alt="Business solution for every individual"
-                                        class="img-cover">
+                                    <img src="./assets/img/blog-3.png" width="202" height="162" loading="lazy" alt="Business solution for every individual" class="img-cover">
                                 </figure>
 
                                 <div class="card-content">
@@ -432,9 +421,7 @@
                             <div class="blog-card">
 
                                 <figure class="card-banner">
-                                    <img src="./assets/img/blog-4.png" width="202" height="162"
-                                        loading="lazy" alt="How to gain pro experience ar figma update version"
-                                        class="img-cover">
+                                    <img src="./assets/img/blog-4.png" width="202" height="162" loading="lazy" alt="How to gain pro experience ar figma update version" class="img-cover">
                                 </figure>
 
                                 <div class="card-content">
@@ -485,7 +472,7 @@
                     <p class="footer-list-title">Tentang LPPI</p>
 
                     <p class="footer-text">
-                        Anda bisa mencari tahu seputar program dan kegiatan LPPI Universitas Muhammadiyah Bengkulu, 
+                        Anda bisa mencari tahu seputar program dan kegiatan LPPI Universitas Muhammadiyah Bengkulu,
                         dengan mengunjungi website resmi LPPI UMB.
                     </p>
 

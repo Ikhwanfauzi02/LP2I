@@ -15,9 +15,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'mahasiswa') {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
     <link rel="stylesheet" href="../assets/css/drop_style.css" />
     <title>LPPI Universitas Muhammadiyah Bengkulu</title>
 
@@ -53,100 +51,89 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'mahasiswa') {
     -->
 
     <header class="header" data-header>
-        <div class="container">
+        <nav class="container d-flex justify-content-between align-items-center">
 
-            <a href="#" class="logo" >LPPI-UMB</a>
+            <!-- Kolom Pertama: Logo LPPI-UMB -->
+            <div class="header-column">
+                <h2 style="color: black;">LPPI-UMB</h2>
+            </div>
 
-            <nav class="navbar" data-navbar>
-
+            <!-- Kolom Kedua: Navigasi -->
+            <nav class="navbar header-column" data-navbar>
+                <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+                    <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+                </button>
                 <div class="wrapper">
-                    <a href="#" class="logo">LPPI-UMB</a>
-
                     <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
                         <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
                     </button>
                 </div>
-
-                <ul class="navbar-list">
-
+                <ul class="navbar-list d-flex align-items-center">
                     <li class="navbar-item">
                         <a href="#home" class="navbar-link" data-nav-link>Home</a>
                     </li>
-                    
                     <li class="navbar-item">
                         <a href="#service" class="navbar-link" data-nav-link>Program</a>
                     </li>
-
                     <li class="navbar-item">
                         <a href="#blog" class="navbar-link" data-nav-link>Konsultasi</a>
                     </li>
-
                     <li class="navbar-item">
                         <a href="https://umb.ac.id/" class="navbar-link" data-nav-link>UMB Web</a>
                     </li>
                 </ul>
-
             </nav>
 
-            
-            <div class="" aria-label="open menu" data-nav-toggler></div>
-            <div class="profile-dropdown">
-            <div onclick="toggle()" class="profile-dropdown-btn">
-            <div class="profile-img">
-                <i class="fa-solid fa-circle"></i>
+            <!-- Kolom Ketiga: Akun/Tombol Dropdown -->
+            <div class="">
+                <div class="profile-dropdown" onclick="toggle()">
+                    <div class="profile-dropdown-btn">
+                        <span>
+                            <?php echo $nama_lengkap; ?>
+                            <i class="fa-solid fa-angle-down"></i>
+                        </span>
+                        <ul class="profile-dropdown-list">
+                            <li class="profile-dropdown-list-item">
+                                <a href="#">
+                                    <i class="fa-regular fa-user"></i>
+                                    Level : <?php echo $_SESSION['role']; ?>
+                                </a>
+                            </li>
+                            <li class="profile-dropdown-list-item">
+                                <a href="#">
+                                    <i class="fa-regular fa-envelope"></i>
+                                    Announcement
+                                </a>
+                            </li>
+                            <li class="profile-dropdown-list-item">
+                                <a href="../front_end/ganti_password.php">
+                                    <i class="fa-solid fa-sliders"></i>
+                                    Change Password
+                                </a>
+                            </li>
+                            <li class="profile-dropdown-list-item">
+                                <a href="#">
+                                    <i class="fa-regular fa-circle-question"></i>
+                                    Help & Support
+                                </a>
+                            </li>
+                            <hr />
+                            <li class="profile-dropdown-list-item">
+                                <a href="../back_end/logout.php">
+                                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                    Log Out
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-
-            <div>
-            <span>
-            <?php echo $nama_lengkap; ?>
-                <i class="fa-solid fa-angle-down"></i>
-            </span>
-            </div>
-
-            <ul class="profile-dropdown-list">
-            <li class="profile-dropdown-list-item">
-                <a href="#">
-                <i class="fa-regular fa-user"></i>
-                Level : <?php echo $_SESSION['role']; ?>
-                </a>
-            </li>
-
-            <li class="profile-dropdown-list-item">
-                <a href="#">
-                <i class="fa-regular fa-envelope"></i>
-                Announcement
-                </a>
-            </li>
-
-            <li class="profile-dropdown-list-item">
-                <a href="../front_end/ganti_password.php">
-                <i class="fa-solid fa-sliders"></i>
-                Change Password
-                </a>
-            </li>
-
-            <li class="profile-dropdown-list-item">
-                <a href="#">
-                <i class="fa-regular fa-circle-question"></i>
-                Help & Support
-                </a>
-            </li>
-            <hr />
-
-            <li class="profile-dropdown-list-item">
-                <a href="../back_end/logout.php">
-                <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                Log Out
-                </a>
-            </li>
-            </ul>
-            </div>
-            <div class="overlay" data-nav-toggler data-overlay></div>
-
-        </div>
+            <button class="nav-open-btn" aria-label="open menu" aria-hidden="true" data-nav-toggler>
+            <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+        </button>
+        </nav>
+        
     </header>
-
-
 
 
 
@@ -163,7 +150,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'mahasiswa') {
                     <div class="hero-content">
 
                         <h1 class="h1 hero-title">
-                            Lembaga <span class="has-before">Pengkajian</span>Dan Pengamalan Islam (LPPI) 
+                            Lembaga <span class="has-before">Pengkajian</span>Dan Pengamalan Islam (LPPI)
                         </h1>
                         <h1>
                             Universitas Muhammadiyah Bengkulu
@@ -204,8 +191,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'mahasiswa') {
                     </div>
 
                     <figure class="hero-banner">
-                        <img src="../assets/img/um-bengkulu.jpg" width="794" height="637" alt="hero banner"
-                            class="w-100">
+                        <img src="../assets/img/um-bengkulu.jpg" width="794" height="637" alt="hero banner" class="w-100">
                     </figure>
 
                 </div>
@@ -232,8 +218,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'mahasiswa') {
                             <div class="service-card" style="--color: 174, 77%, 50%">
 
                                 <div class="card-icon">
-                                    <img src="../assets/img/BBA.png" width="30" height="30"
-                                        loading="lazy" alt="service icon">
+                                    <img src="../assets/img/BBA.png" width="30" height="30" loading="lazy" alt="service icon">
                                 </div>
 
                                 <h3 class="h3">
@@ -247,8 +232,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'mahasiswa') {
                             <div class="service-card" style="--color: 267, 76%, 57%">
 
                                 <div class="card-icon">
-                                    <img src="../assets/img/service-icon-2.png" width="30" height="30"
-                                        loading="lazy" alt="service icon">
+                                    <img src="../assets/img/service-icon-2.png" width="30" height="30" loading="lazy" alt="service icon">
                                 </div>
 
                                 <h3 class="h3">
@@ -262,8 +246,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'mahasiswa') {
                             <div class="service-card" style="--color: 17, 100%, 68%">
 
                                 <div class="card-icon">
-                                    <img src="../assets/img/service-icon-3.png" width="30" height="30"
-                                        loading="lazy" alt="service icon">
+                                    <img src="../assets/img/service-icon-3.png" width="30" height="30" loading="lazy" alt="service icon">
                                 </div>
 
                                 <h3 class="h3">
@@ -277,8 +260,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'mahasiswa') {
                             <div class="service-card" style="--color: 343, 98%, 60%">
 
                                 <div class="card-icon">
-                                    <img src="../assets/img/service-icon-4.png" width="30" height="30"
-                                        loading="lazy" alt="service icon">
+                                    <img src="../assets/img/service-icon-4.png" width="30" height="30" loading="lazy" alt="service icon">
                                 </div>
 
                                 <h3 class="h3">
@@ -292,8 +274,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'mahasiswa') {
                             <div class="service-card" style="--color: 210, 100%, 53%">
 
                                 <div class="card-icon">
-                                    <img src="../assets/img/service-icon-5.png" width="30" height="30"
-                                        loading="lazy" alt="service icon">
+                                    <img src="../assets/img/service-icon-5.png" width="30" height="30" loading="lazy" alt="service icon">
                                 </div>
 
                                 <h3 class="h3">
@@ -307,8 +288,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'mahasiswa') {
                             <div class="service-card" style="--color: 157, 89%, 44%">
 
                                 <div class="card-icon">
-                                    <img src="../assets/img/service-icon-6.png" width="30" height="30"
-                                        loading="lazy" alt="service icon">
+                                    <img src="../assets/img/service-icon-6.png" width="30" height="30" loading="lazy" alt="service icon">
                                 </div>
 
                                 <h3 class="h3">
@@ -322,8 +302,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'mahasiswa') {
                             <div class="service-card" style="--color: 52, 98%, 50%">
 
                                 <div class="card-icon">
-                                    <img src="../assets/img/service-icon-7.png" width="30" height="30"
-                                        loading="lazy" alt="service icon">
+                                    <img src="../assets/img/service-icon-7.png" width="30" height="30" loading="lazy" alt="service icon">
                                 </div>
 
                                 <h3 class="h3">
@@ -337,8 +316,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'mahasiswa') {
                             <div class="service-card" style="--color: 52, 98%, 50%">
 
                                 <div class="card-icon">
-                                    <img src="../assets/img/service-icon-7.png" width="30" height="30"
-                                        loading="lazy" alt="service icon">
+                                    <img src="../assets/img/service-icon-7.png" width="30" height="30" loading="lazy" alt="service icon">
                                 </div>
 
                                 <h3 class="h3">
@@ -375,8 +353,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'mahasiswa') {
                             <div class="blog-card large">
 
                                 <figure class="card-banner">
-                                    <img src="../assets/img/blog-1.jpg" width="644" height="363"
-                                        loading="lazy" alt="Godaddy user flow solution..." class="img-cover">
+                                    <img src="../assets/img/blog-1.jpg" width="644" height="363" loading="lazy" alt="Godaddy user flow solution..." class="img-cover">
                                 </figure>
 
                                 <div class="card-content">
@@ -411,9 +388,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'mahasiswa') {
                             <div class="blog-card">
 
                                 <figure class="card-banner">
-                                    <img src="../assets/img/blog-2.jpg" width="202" height="162"
-                                        loading="lazy" alt="Godaddy user flow solution for every individual"
-                                        class="img-cover">
+                                    <img src="../assets/img/blog-2.jpg" width="202" height="162" loading="lazy" alt="Godaddy user flow solution for every individual" class="img-cover">
                                 </figure>
 
                                 <div class="card-content">
@@ -442,9 +417,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'mahasiswa') {
                             <div class="blog-card">
 
                                 <figure class="card-banner">
-                                    <img src="../assets/img/blog-3.png" width="202" height="162"
-                                        loading="lazy" alt="Business solution for every individual"
-                                        class="img-cover">
+                                    <img src="../assets/img/blog-3.png" width="202" height="162" loading="lazy" alt="Business solution for every individual" class="img-cover">
                                 </figure>
 
                                 <div class="card-content">
@@ -473,9 +446,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'mahasiswa') {
                             <div class="blog-card">
 
                                 <figure class="card-banner">
-                                    <img src="../assets/img/blog-4.png" width="202" height="162"
-                                        loading="lazy" alt="How to gain pro experience ar figma update version"
-                                        class="img-cover">
+                                    <img src="../assets/img/blog-4.png" width="202" height="162" loading="lazy" alt="How to gain pro experience ar figma update version" class="img-cover">
                                 </figure>
 
                                 <div class="card-content">
@@ -526,7 +497,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'mahasiswa') {
                     <p class="footer-list-title">Tentang LPPI</p>
 
                     <p class="footer-text">
-                        Anda bisa mencari tahu seputar program dan kegiatan LPPI Universitas Muhammadiyah Bengkulu, 
+                        Anda bisa mencari tahu seputar program dan kegiatan LPPI Universitas Muhammadiyah Bengkulu,
                         dengan mengunjungi website resmi LPPI UMB.
                     </p>
 

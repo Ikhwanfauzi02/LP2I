@@ -8,6 +8,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'mahasiswa') {
     header('Location: ../back_end/no_access.php');
     exit;
 }
+$navbar = '../components/navbar_ba.html';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,114 +49,15 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'mahasiswa') {
 </head>
 
 <body id="top">
-
-    <!--
-    - #HEADER
-    -->
-
-    <header class="header" data-header>
-        <div class="container">
-
-            <a href="#" class="logo" >LPPI-UMB</a>
-
-            <nav class="navbar" data-navbar>
-
-                <div class="wrapper">
-                    <a href="#" class="logo">LPPI-UMB</a>
-
-                    <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
-                        <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
-                    </button>
-                </div>
-
-                <ul class="navbar-list">
-
-                    <li class="navbar-item">
-                        <a href="#home" class="navbar-link" data-nav-link>Home</a>
-                    </li>
-
-                    <li class="navbar-item">
-                        <a href="#service" class="navbar-link" data-nav-link>Program</a>
-                    </li>
-
-                    <li class="navbar-item">
-                        <a href="#blog" class="navbar-link" data-nav-link>Konsultasi</a>
-                    </li>
-
-                    <li class="navbar-item">
-                        <a href="https://umb.ac.id/" class="navbar-link" data-nav-link>UMB Web</a>
-                    </li>
-                </ul>
-
-            </nav>
-
-            
-            <div class="" aria-label="open menu" data-nav-toggler></div>
-            <div class="profile-dropdown">
-            <div onclick="toggle()" class="profile-dropdown-btn">
-            <div class="profile-img">
-                <i class="fa-solid fa-circle"></i>
-            </div>
-            <div>
-                <span>
-                <?= $nama_lengkap; ?>
-                <i class="fa-solid fa-angle-down"></i>
-                </span>
-            </div>
-
-            <ul class="profile-dropdown-list">
-            <li class="profile-dropdown-list-item">
-                <a href="#">
-                <i class="fa-regular fa-user"></i>
-                Level: <?= $_SESSION['role']; ?>
-                </a>
-            </li>
-
-            <li class="profile-dropdown-list-item">
-                <a href="#">
-                <i class="fa-regular fa-envelope"></i>
-                Announcement
-                </a>
-            </li>
-
-            <li class="profile-dropdown-list-item">
-                <a href="../front_end/ganti_password.php">
-                <i class="fa-solid fa-sliders"></i>
-                Change Password
-                </a>
-            </li>
-
-            <li class="profile-dropdown-list-item">
-                <a href="#">
-                <i class="fa-regular fa-circle-question"></i>
-                Help & Support
-                </a>
-            </li>
-            <hr />
-
-            <li class="profile-dropdown-list-item">
-                <a href="../back_end/logout.php">
-                <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                Log Out
-                </a>
-            </li>
-            </ul>
-            </div>
-            <div class="overlay" data-nav-toggler data-overlay></div>
-
-        </div>
-    </header>
-
-
-
-
-
+    <!-- Navbar -->
+    <?php @include ($navbar); ?>
+    <!-- Navbar -->
     <main>
         <article>
 
             <!--
         - #HERO
-      -->
+    -->
 
             <section class="section hero" id="home" aria-label="hero">
                 <div class="container">
@@ -163,7 +65,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'mahasiswa') {
                     <div class="hero-content">
 
                         <h1 class="h1 hero-title">
-                            Lembaga <span class="has-before">Pengkajian</span>Dan Pengamalan Islam (LPPI) 
+                            Program <span class="has-before"> Batul Arqom </span> Dan Pengamalan Islam (LPPI) 
                         </h1>
                         <h1>
                             Universitas Muhammadiyah Bengkulu

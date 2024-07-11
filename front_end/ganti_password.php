@@ -29,7 +29,7 @@ if (!isset($_SESSION['user_id'])) {
         crossorigin="anonymous"></script>
     <script defer src="../assets/js/formlogin.js"></script>
     <script defer src="../assets/js/loader.js"></script>
-    <script defer src="../assets/js/field.js"></script>
+    <script defer src="../assets/js/script.js"></script>
     <title>Add Account LP2I UM Bengkulu</title>
 
 </head>
@@ -78,10 +78,10 @@ if (!isset($_SESSION['user_id'])) {
                                 <label class="form-label form-label-white letter-spacing d-flex" for="password" style="font-family: 'Open Sans', Times, serif;">Old Password
                                     :</label>
                                 <article class="input-group">
-                                    <input type="password" id="old_password" name="old_password"
+                                    <input type="password" id="password" name="old_password"
                                         class="form-control input-glass" aria-describedby="passwordHelpBlock" style="font-family: 'Open Sans', Times, serif;" placeholder="Old Password" required>
                                     <a class="input-group-text input-glass" style="text-decoration:none"
-                                        onclick="apala()">
+                                        onclick="togglePasswordVisibility('password', 'toggleIcon')">
                                         <i id="toggleIcon" class="nf nf-fa-eye_slash"></i>
                                     </a>
                                 </article>
@@ -95,8 +95,8 @@ if (!isset($_SESSION['user_id'])) {
                                     <input type="password" id="new_password" name="new_password"
                                         class="form-control input-glass" aria-describedby="passwordHelpBlock" style="font-family: 'Open Sans', Times, serif;" placeholder="New Password" required>
                                     <a class="input-group-text input-glass" style="text-decoration:none"
-                                        onclick="apala()">
-                                        <i id="toggleIcon" class="nf nf-fa-eye_slash"></i>
+                                        onclick="togglePasswordVisibility('new_password', 'toggleIcon2')">
+                                        <i id="toggleIcon2" class="nf nf-fa-eye_slash"></i>
                                     </a>
                                 </article>
                             </article>
@@ -109,8 +109,8 @@ if (!isset($_SESSION['user_id'])) {
                                     <input type="password" id="confirm_password" name="confirm_password"
                                         class="form-control input-glass" aria-describedby="passwordHelpBlock" style="font-family: 'Open Sans', Times, serif;" placeholder="Confirm Password" required>
                                     <a class="input-group-text input-glass" style="text-decoration:none"
-                                        onclick="apala()">
-                                        <i id="toggleIcon" class="nf nf-fa-eye_slash"></i>
+                                        onclick="togglePasswordVisibility('confirm_password', 'toggleIcon3')">
+                                        <i id="toggleIcon3" class="nf nf-fa-eye_slash"></i>
                                     </a>
                                 </article>
                                 <article id="passwordHelpBlock" class="col-auto form-text mb-4 d-flex"

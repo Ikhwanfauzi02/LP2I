@@ -37,7 +37,7 @@ CREATE TABLE ba_mahasiswa (
 
 -- Tabel grade_bamhs
 CREATE TABLE grade_bamhs (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_grade INT AUTO_INCREMENT PRIMARY KEY,
     mahasiswa_id INT NOT NULL,
     presensi VARCHAR(512),
     baca_tulis_alquran VARCHAR(512),

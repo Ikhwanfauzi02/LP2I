@@ -11,103 +11,108 @@ if (isset($_SESSION['user_id']) && $_SESSION['role'] === 'admin') {
     exit;
 }
 
-// Generate CSRF Token
-if (empty($_SESSION['csrf_token'])) {
-    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-}
 ?>
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
+<html lang="en">
+
 <head>
-   <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../assets/img/umb.png">
-    <link rel="stylesheet" href="../assets/css/buttons.css">
-    <link rel="stylesheet" href="../assets/css/formlogin.css">
-    <link rel="stylesheet" href="../assets/css/loader.css">
-	<link rel="shortcut icon" href="../assets/img/umb.png">
-    <link rel="stylesheet" href="../assets/css/buttonback.css">
-    <link rel="stylesheet" href="https://www.nerdfonts.com/assets/css/webfont.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="shortcut icon" href="../assets/img/umb.png">
-    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-    <script defer src="../assets/js/formlogin.js"></script>
-    <script defer src="../assets/js/loader.js"></script>
+    <title>Login V18</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="../assets/img/logo-umb.png" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../assets/login/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../assets/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../assets/login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../assets/login/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../assets/login/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../assets/login/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../assets/login/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../assets/login/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../assets/login/css/util.css">
+    <link rel="stylesheet" type="text/css" href="../assets/login/css/main.css">
+    <!--===============================================================================================-->
     <title>Log In LP2i UM Bengkulu</title>
 </head>
 
-<body class="bg-custom-green">
-    <a href="javascript:history.back()" class="back-button">
-        <i class="nf nf-fa-arrow_left"></i>
-    </a>
-    <section id="preloaderSubmit" class="preloader-submit">
-        <article class="loader"></article>
-    </section>
-    <section id="preloaderLink" class="preloader d-flex">
-        <article class="loader"></article>
-    </section>
+<body style="background-color: #fff;">
 
-    <!-- Section: Design Block -->
-    <main class="container-fluid d-flex justify-content-center align-items-center vh-100">
-        <section class="custom-card d-flex justify-content-center align-items-center bg-glass-dark mb-3 p-4">
-            <article class="container-fluid g-3 d-flex align-items-center">
-                <figure class="col-6 d-none d-lg-flex justify-content-center">
-                    <img src="../assets/img/umb.png"
-                        class="w-75 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5 px-2" />
-                </figure>
-                <aside class="card-body py-4 px-md-4">
-                    <form id="loginForm" action="../back_end/cek_login.php" method="POST">
-                        <header class="form-outline mb-4">
-                            <label class="form-label form-label-white letter-spacing d-flex">
-                                <span style="font-size: 2rem; font-family: 'Open Sans', Times, serif;">Log In Form</span></label>
-                        </header>
-                        <!-- Username-->
-                        <article class="form-outline mb-4">
-                            <label class="form-label form-label-white letter-spacing d-flex"  for="username" style="font-family: 'Open Sans', Times, serif;">Username :</label>
-                            <article class="input-group">
-                                <span class="input-group-text input-glass" id="iconuser"><i
-                                        class="nf nf-oct-person_fill"></i></span>
-                                <input type="text" id="username" name="username" class="form-control input-glass" style="font-family: 'Open Sans', Times, serif;" placeholder="Username"
-                                    autofocus />
-                            </article>
-                        </article>
-                        <!-- Password input -->
-                        <article class="form-outline mb-4">
-                            <label class="form-label form-label-white letter-spacing d-flex" style="font-family: 'Open Sans', Times, serif;" for="password">Password
-                                :</label>
-                            <article class="input-group">
-                                <input style="font-family: 'Open Sans', Times, serif;" type="password" id="password" name="password" placeholder="Password" class="form-control input-glass"
-                                    aria-describedby="passwordHelpBlock" required>
-                                <a class="input-group-text input-glass" style="text-decoration:none" onclick="apala()">
-                                    <i id="toggleIcon" class="nf nf-fa-eye_slash"></i>
+    <div class="container">
+        <div class="limiter py-5 vh-100">
+            <div class="container-login100">
+                <div class="wrap-login100">
+                    <form action="../back_end/cek_login.php" method="POST" class="login100-form validate-form">
+                        <span class="login100-form-title p-b-43">
+                            Login to continue
+                        </span>
+                        <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                            <input class="input100" type="text" name="username" required autofocus>
+                            <span class="focus-input100"></span>
+                            <span class="label-input100">Username</span>
+                        </div>
+
+
+                        <div class="wrap-input100 validate-input" data-validate="Password is required">
+                            <input class="input100" type="password" name="password" required>
+                            <span class="focus-input100"></span>
+                            <span class="label-input100">Password</span>
+
+                        </div>
+
+                        <div class="flex-sb-m w-full p-t-3 p-b-32">
+                            <div class="contact100-form-checkbox">
+                                <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                                <label class="label-checkbox100" for="ckb1">
+                                    Remember me
+                                </label>
+                            </div>
+
+                            <div>
+                                <a href="#" class="txt1">
+                                    Forgot Password?
                                 </a>
-								<input type="hidden" name="csrf_token" value="<?=($_SESSION['csrf_token']); ?>">
-                            </article>
-                        </article>
-                        <!-- 2 column grid layout for inline styling -->
-                        <article class="row mb-4">
-                            <article class="col d-flex justify-content-center">
-                                
-                            </article>
-                            <article class="col">
-                                <!-- Simple link -->
-                                <a href="#!">Lupa password?</a>
-                            </article>
-                        </article>
-                        <!-- Submit button -->
-                        <article class="d-grid gap-2">
-                            <button type="submit" name="submit" id="submitBtn"
-                                class="preload-submit button-3 mb-4" style="font-family: 'Open Sans', Times, serif; font-weight: bold;">Login</button>
-                        </article>
+                            </div>
+                        </div>
+                        <div class="container-login100-form-btn">
+                            <button id="submit" name="submit"class="login100-form-btn">
+                                Login
+                            </button>
+                        </div>
                     </form>
-                </aside>
-            </article>
-        </section>
-    </main>
-    <!-- footer -->
+                    <div class="login100-more" style="background-image: url('../assets/img/project-4.jpg');">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--===============================================================================================-->
+    <script src="../assets/login/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="../assets/login/vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="../assets/login/vendor/bootstrap/js/popper.js"></script>
+    <script src="../assets/login/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="../assets/login/vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="../assets/login/vendor/daterangepicker/moment.min.js"></script>
+    <script src="../assets/login/vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="../assets/login/vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script src="../assets/login/js/main.js"></script>
+
 </body>
 
 </html>

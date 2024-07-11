@@ -130,10 +130,8 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
                                             class="nf nf-oct-person_fill"></i></span>
                                     <select class="input-control" name="role" id="role" class="form-control" style="font-family: 'Open Sans', Times, serif;" required>
 										<option value="" style="font-family: 'Open Sans', Times, serif;">Select Role</option>
-										<option value="admin" style="font-family: 'Open Sans', Times, serif;">Admin</option>
 										<option value="operator" style="font-family: 'Open Sans', Times, serif;">Operator</option>
-										<option value="mahasiswa" style="font-family: 'Open Sans', Times, serif;">Mahasiswa</option>
-										<option value="dosen" style="font-family: 'Open Sans', Times, serif;">Dosen</option>
+										<option value="mahasiswa" style="font-family: 'Open Sans', Times, serif;">Mahasiswa</option> 
 									</select>
                                 </article><br>
 

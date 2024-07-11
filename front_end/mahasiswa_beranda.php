@@ -132,7 +132,6 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'mahasiswa') {
             <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
         </button>
         </nav>
-        
     </header>
 
 
@@ -639,10 +638,6 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'mahasiswa') {
     <a href="#top" class="back-top-btn has-after active" aria-label="back to top" data-back-top-btn>
         <ion-icon name="arrow-up" aria-hidden="true"></ion-icon>
     </a>
-
-
-
-
 
     <!--
     - custom js link

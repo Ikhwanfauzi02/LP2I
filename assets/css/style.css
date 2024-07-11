@@ -831,7 +831,6 @@ body {
 }
 
 .footer-top {
-  padding-block-end: 60px;
   display: grid;
   gap: 50px;
 }

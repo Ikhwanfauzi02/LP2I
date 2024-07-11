@@ -15,32 +15,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $encrypted_alamat = encryptValueAES192($alamat, $secret_key);
     $encrypted_nomor_hp = encryptValueAES192($nomor_hp, $secret_key);
 
-    // Mengambil user_id dan username dari sesi yang sedang aktif
+    // Mengambil user_id dari sesi yang sedang aktif
     $user_id = $_SESSION['user_id']; // Asumsi user_id disimpan di sesi
-    $username = $_SESSION['username']; // Asumsi username disimpan di sesi
 
-    // Mengambil npm dari tabel mahasiswa berdasarkan user_id
-    $query_npm = $conn->prepare("SELECT npm FROM mahasiswa WHERE user_id = ?");
-    $query_npm->bind_param('i', $user_id);
-    $query_npm->execute();
-    $result_npm = $query_npm->get_result();
-    $row_npm = $result_npm->fetch_assoc();
-    $npm = $row_npm['npm'];
+    // Mengambil mahasiswa_id dari tabel mahasiswa berdasarkan user_id
+    $query_mahasiswa = $conn->prepare("SELECT mahasiswa_id FROM mahasiswa WHERE user_id = ?");
+    $query_mahasiswa->bind_param('i', $user_id);
+    $query_mahasiswa->execute();
+    $result_mahasiswa = $query_mahasiswa->get_result();
+    $row_mahasiswa = $result_mahasiswa->fetch_assoc();
+    $mahasiswa_id = $row_mahasiswa['mahasiswa_id'];
 
-    // Mengecek apakah pengguna sudah pernah mendaftar sebelumnya berdasarkan user_id dan npm
-    $query_check = $conn->prepare("SELECT * FROM ba_mahasiswa WHERE user_id = ? AND npm = ?");
-    $query_check->bind_param('is', $user_id, $npm); // Mengikat parameter user_id dan npm ke query
+    // Tambahkan pemeriksaan apakah mahasiswa_id ditemukan
+    if (!$mahasiswa_id) {
+        echo "<script>alert('Mahasiswa ID tidak ditemukan untuk user_id tersebut'); 
+        window.location.href='../front_end/formdaftarba_mhs.php';</script>";
+        exit;
+    }
+
+    // Mengecek apakah pengguna sudah pernah mendaftar sebelumnya berdasarkan mahasiswa_id
+    $query_check = $conn->prepare("SELECT * FROM ba_mahasiswa WHERE mahasiswa_id = ?");
+    $query_check->bind_param('i', $mahasiswa_id); // Mengikat parameter mahasiswa_id ke query
     $query_check->execute(); // Menjalankan query
     $result_check = $query_check->get_result(); // Mendapatkan hasil dari query
 
-    // Jika sudah ada pendaftaran dengan user_id dan npm tersebut, tampilkan pesan error
+    // Jika sudah ada pendaftaran dengan mahasiswa_id tersebut, tampilkan pesan error
     if ($result_check->num_rows > 0) {
         echo "<script>alert('Anda sudah mendaftar sebelumnya!'); 
         window.location.href='../front_end/formdaftarba_mhs.php';</script>";
     } else {
         // Jika belum ada pendaftaran, persiapkan query untuk memasukkan data pendaftaran baru
-        $query = $conn->prepare("INSERT INTO ba_mahasiswa (user_id, npm, angkatan, semester, alamat, nomor_hp, waktu_daftar) VALUES (?, ?, ?, ?, ?, ?, NOW())");
-        $query->bind_param('isssss', $user_id, $npm, $angkatan, $semester, $encrypted_alamat, $encrypted_nomor_hp); // Mengikat parameter ke query
+        $query = $conn->prepare("INSERT INTO ba_mahasiswa (mahasiswa_id, angkatan, semester, alamat, nomor_hp, waktu_daftar) VALUES (?, ?, ?, ?, ?, NOW())");
+        $query->bind_param('issss', $mahasiswa_id, $angkatan, $semester, $encrypted_alamat, $encrypted_nomor_hp); // Mengikat parameter ke query
 
         // Menjalankan query dan memeriksa apakah berhasil
         if ($query->execute()) {

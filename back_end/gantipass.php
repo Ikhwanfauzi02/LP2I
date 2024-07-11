@@ -11,7 +11,7 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
     $old_password = filter_var($_POST['old_password'], FILTER_SANITIZE_SPECIAL_CHARS);
     $new_password = filter_var($_POST['new_password'], FILTER_SANITIZE_SPECIAL_CHARS);
     $confirm_password = filter_var($_POST['confirm_password'], FILTER_SANITIZE_SPECIAL_CHARS);
@@ -52,7 +52,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Beri pesan dan arahkan ke halaman login
     echo "<script>alert('Password berhasil diubah');
-    window.location.href='../back_end/logout.php'';</script>";
+    window.location.href='../back_end/logout.php';</script>";
     exit;
 }
 ?>
+

@@ -33,11 +33,10 @@
                     <a href="https://umb.ac.id/" class="navbar-link" data-nav-link>Jadwal Kegiatan</a>
                 </li>
             </ul>
-            <div class="overlay" data-nav-toggler data-overlay></div>
         </nav>
 
         <!-- Kolom Ketiga: Akun/Tombol Dropdown -->
-        <div class="header-column">
+        <div class="">
             <div class="profile-dropdown" onclick="toggle()">
                 <div class="profile-dropdown-btn">
                     <span>
@@ -48,7 +47,8 @@
                         <li class="profile-dropdown-list-item">
                             <a href="#">
                                 <i class="fa-regular fa-user"></i>
-                                Level : <?php echo $_SESSION['role']; ?>
+                                Level :
+                                <?php echo $_SESSION['role']; ?>
                             </a>
                         </li>
                         <li class="profile-dropdown-list-item">
@@ -80,10 +80,9 @@
                 </div>
             </div>
         </div>
+        <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+            <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+        </button>
     </nav>
-    <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
-        <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
-    </button>
-    <div class="overlay" data-nav-toggler data-overlay>
-    </div>
+
 </header>

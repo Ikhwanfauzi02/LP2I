@@ -8,44 +8,18 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'mahasiswa') {
     header('Location: ../back_end/no_access.php');
     exit;
 }
-$navbar = '../components/navbar_ba.html';
+$head = '../components/head_mahasiswa.html';
+$navbar = '../components/navbar_mahasiswa.html';
+$footer = '../components/footer_mahasiswa.html';
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
-    <link rel="stylesheet" href="../assets/css/drop_style.css" />
     <title>LPPI Universitas Muhammadiyah Bengkulu</title>
-
-    <!--
-    - favicon
-    -->
-    <link rel="shortcut icon" href="../assets/img/umb.png">
-
-    <!--
-    - custom css link
-    -->
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/drop_style.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--
-    - google font link
-    -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-
-    <!--
-    - preload img
-    -->
-    <link rel="preload" as="image" href="../assets/img/.png">
-
+    <!-- Navbar -->
+    <?php @include ($head); ?>
+    <!-- Navbar -->
 </head>
 
 <body id="top">
@@ -54,18 +28,14 @@ $navbar = '../components/navbar_ba.html';
     <!-- Navbar -->
     <main>
         <article>
-
-            <!--
-        - #HERO
-    -->
-
+            <!-- #HERO -->
             <section class="section hero" id="home" aria-label="hero">
                 <div class="container">
 
                     <div class="hero-content">
 
                         <h1 class="h1 hero-title">
-                            Program <span class="has-before"> Batul Arqom </span> Dan Pengamalan Islam (LPPI) 
+                            Program <span class="has-before"></span>Dan Pengamalan Islam (LPPI) 
                         </h1>
                         <h1>
                             Universitas Muhammadiyah Bengkulu
@@ -197,177 +167,18 @@ $navbar = '../components/navbar_ba.html';
 
         </article>
     </main>
-
-    <!--
-    - #FOOTER
--->
-
-    <footer class="footer">
-        <div class="container">
-
-            <div class="footer-top section">
-
-                <div class="footer-brand">
-
-                    <p class="footer-list-title">Tentang LPPI</p>
-
-                    <p class="footer-text">
-                        Anda bisa mencari tahu seputar program dan kegiatan LPPI Universitas Muhammadiyah Bengkulu, 
-                        dengan mengunjungi website resmi LPPI UMB.
-                    </p>
-
-                    <ul class="social-list">
-
-                        <li>
-                            <a href="#" class="social-link">
-                                <ion-icon name="logo-youtube"></ion-icon>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="social-link">
-                                <ion-icon name="logo-instagram"></ion-icon>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="social-link">
-                                <ion-icon name="logo-facebook"></ion-icon>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="social-link">
-                                <ion-icon name="logo-tiktok"></ion-icon>
-                            </a>
-                        </li>
-
-                    </ul>
-
-                </div>
-
-                <ul class="footer-list">
-
-                    <li>
-                        <p class="footer-list-title">Hubungi Kami</p>
-                    </li>
-
-                    <li>
-                        <a href="#" class="footer-link">Lembaga Pengkajian Dan Pengamalan Islam</a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="footer-link">Telp : (0281) 636751, 630463, 63424 </a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="footer-link">Email : lppi@umb.ac.id</a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="footer-link">Email : </a>
-                    </li>
-
-                    <li>
-                        <a href="https://umb.ac.id/" class="footer-link">Web Universitas Muhammadiyah Bengkulu</a>
-                    </li>
-
-                </ul>
-
-                <ul class="footer-list">
-
-                    <li>
-                        <p class="footer-list-title">Whatsapp</p>
-                    </li>
-
-                    <li>
-                        <a href="#" class="footer-link">Admin Ikhwan : 085846139614 </a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="footer-link">Admin Akhwat : 085846139614</a>
-                    </li>
-
-                </ul>
-
-                <ul class="footer-list">
-
-                    <li>
-                        <p class="footer-list-title">Alamat</p>
-                    </li>
-
-                    <li>
-                        <a href="#" class="footer-link">Kampus 1 : Jl. Bali, Kp. Bali, Kec. Tlk. Segara, Kota Bengkulu, Bengkulu 38119</a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="footer-link">Kampus 2 : Jl. Salak Raya, Padang Nangka, Kec. Singaran Pati, Kota Bengkulu, Bengkulu 38225, Indonesia</a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="footer-link">Kampus 3 : JL. S. Parman, No. 25, Padang Jati, Penurunan, Kec. Ratu Samban, Kota Bengkulu, Bengkulu 38222</a>
-                    </li>
-                    <li>
-
-                        <a href="#" class="footer-link">Kampus 4 : Jl. H. Adam Malik No.17, Cemp. Permai, Kec. Gading Cempaka, Kota Bengkulu, Bengkulu 38221</a>
-                    </li>
-
-                </ul>
-
-            </div>
-
-            <div class="footer-bottom">
-
-                <p class="copyright">
-                    &copy; 2024 LPPI Universitas Muhammadiyah Bengkulu. All Rights Reserved by Ikhwan Fauzi
-                </p>
-
-                <ul class="footer-bottom-list">
-
-                    <li>
-                        <a href="#" class="footer-bottom-link">Terms and conditions</a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="footer-bottom-link">Privacy policy</a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="footer-bottom-link">Login</a>
-                    </li>
-
-                </ul>
-
-            </div>
-
-        </div>
-    </footer>
-
-
-
-
-
-    <!--
-    - #BACK TO TOP
-  -->
+    <!--- #FOOTER-->
+    <?php @include ($footer); ?>
+    <!--- #FOOTER-->
 
     <a href="#top" class="back-top-btn has-after active" aria-label="back to top" data-back-top-btn>
         <ion-icon name="arrow-up" aria-hidden="true"></ion-icon>
     </a>
-
-
-
-
-
-    <!--
-    - custom js link
-  -->
+    <!--- custom js link-->
     <script src="../assets/js/script.js" defer></script>
     <script src="../assets/js/drop_script.js"></script>
 
-    <!--
-    - ionicon link
-  -->
+    <!--- ionicon link-->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 

@@ -30,7 +30,7 @@ if (!isset($_SESSION['user_id'])) {
     <script defer src="../assets/js/formlogin.js"></script>
     <script defer src="../assets/js/loader.js"></script>
     <script defer src="../assets/js/script.js"></script>
-    <title>Add Account LP2I UM Bengkulu</title>
+    <title>Change Password LP2I UM Bengkulu</title>
 
 </head>
 
@@ -121,8 +121,8 @@ if (!isset($_SESSION['user_id'])) {
 							
                             <!-- Submit button -->
                             <article class="d-grid gap-2">
-                                <button type="submit" name="submit" id="submitBtn"
-                                    class="preload-submit button-register2 mb-4" style="font-family: 'Open Sans', Times, serif; font-weight: bold;">Register</button>
+                                <button type="submit" name="submit" id="submit"
+                                    class="preload-submit button-register2 mb-4" style="font-family: 'Open Sans', Times, serif; font-weight: bold;">Confirm</button>
                             </article>
                         </form>
                     </article>

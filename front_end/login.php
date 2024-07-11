@@ -16,7 +16,6 @@ if (isset($_SESSION['user_id']) && $_SESSION['role'] === 'admin') {
 <html lang="en">
 
 <head>
-    <title>Login V18</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->

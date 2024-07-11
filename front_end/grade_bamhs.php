@@ -147,9 +147,6 @@ while ($row = $result->fetch_assoc()) {
                                         <td><?= ($mahasiswa['status']); ?></td>
                                         <td>
                                             <button class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#inputNilaiModal' data-id='<?= htmlspecialchars($mahasiswa['mahasiswa_id']); ?>'>Input Nilai</button>
-                                            <form action='delete_nilai.php' method='POST' style='display:inline'>
-                                                <input type='hidden' name='mahasiswa_id' value='<?= htmlspecialchars($mahasiswa['mahasiswa_id']); ?>'>
-                                                <button class='btn btn-danger' type='submit'>Hapus</button>
                                             </form>
                                         </td>
                                     </tr>

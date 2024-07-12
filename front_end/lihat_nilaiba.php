@@ -3,16 +3,17 @@ session_start();
 include '../config.php';
 include '../function.php';
 include '../back_end/tagname.php';
-// Periksa apakah pengguna sudah login dan memiliki role 'mahasiswa'
+
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'mahasiswa') {
-    // Jika tidak, redirect ke halaman login
-    header('Location: ../back_end/no_access.php');
+    // Memeriksa apakah pengguna sudah login dan memiliki peran 'mahasiswa'.
+    header('Location: ../back_end/no_access.php'); 
+    // Jika tidak, pengguna akan diarahkan ke halaman 'no_access.php'.
     exit;
 }
 
-$user_id = $_SESSION['user_id'];
+$user_id = $_SESSION['user_id']; 
+// Mengambil user_id dari sesi untuk digunakan dalam query.
 
-// Query untuk mengambil data mahasiswa dari beberapa tabel untuk user yang sedang login
 $query = $conn->prepare("
     SELECT 
         u.nama_lengkap, 
@@ -25,20 +26,22 @@ $query = $conn->prepare("
     JOIN mahasiswa m ON gb.mahasiswa_id = m.mahasiswa_id
     JOIN users u ON m.user_id = u.user_id
     WHERE u.user_id = ?
-");
-$query->bind_param("i", $user_id);
-$query->execute();
-$result = $query->get_result();
+"); 
+// Mempersiapkan query untuk mengambil data mahasiswa yang sedang login dari beberapa tabel atau bisa dibilang join atau saling manggil
+
+$query->bind_param("i", $user_id); // Mengikat parameter user_id ke query.
+$query->execute(); // Menjalankan query.
+$result = $query->get_result(); // Mengambil hasil query.
 
 $data = [];
 if ($row = $result->fetch_assoc()) {
-    // Dekripsi data sebelum ditambahkan ke array
-    $nama_lengkap = $row['nama_lengkap'];
-    $npm = decryptValueAES192($row['npm'], $secret_key); 
-    $presensi = decryptValueAES192($row['presensi'], $secret_key);
-    $baca_tulis_alquran = decryptValueAES192($row['baca_tulis_alquran'], $secret_key);
-    $al_islam_kemuh = decryptValueAES192($row['al_islam_kemuh'], $secret_key);
-    $status = decryptValueAES192($row['status'], $secret_key);
+    // Memeriksa apakah ada data yang ditemukan.
+    $nama_lengkap = $row['nama_lengkap']; 
+    $npm = decryptValueAES192($row['npm'], $secret_key); // Mendekripsi data 'npm' menggunakan fungsi decryptValueAES192 dan kunci rahasia.
+    $presensi = decryptValueAES192($row['presensi'], $secret_key); // Mendekripsi data 'presensi'.
+    $baca_tulis_alquran = decryptValueAES192($row['baca_tulis_alquran'], $secret_key); // Mendekripsi data 'baca_tulis_alquran'.
+    $al_islam_kemuh = decryptValueAES192($row['al_islam_kemuh'], $secret_key); // Mendekripsi data 'al_islam_kemuh'.
+    $status = decryptValueAES192($row['status'], $secret_key); // Mendekripsi data 'status'.
 
     $data = [
         'nama_lengkap' => $nama_lengkap,
@@ -47,11 +50,13 @@ if ($row = $result->fetch_assoc()) {
         'baca_tulis_alquran' => $baca_tulis_alquran,
         'al_islam_kemuh' => $al_islam_kemuh,
         'status' => $status
-    ];
+    ]; 
+    // Menyimpan data yang didekripsi dalam array $data.
 }
-$head = '../components/head_mahasiswa.html';
+$head = '../components/head_mahasiswa.html'; 
 $navbar = '../components/navbar_mahasiswa.html';
-$footer = '../components/footer_mahasiswa.html';
+$footer = '../components/footer_mahasiswa.html'; 
+// Menentukan path ke file komponen head, navbar, dan footer.
 ?>
 <!DOCTYPE html>
 <html lang="en">

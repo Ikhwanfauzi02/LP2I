@@ -7,6 +7,7 @@ if (isset($_POST['submit'])) {
 
     $username = filter_var($_POST['username'], FILTER_SANITIZE_SPECIAL_CHARS);
     $password = filter_var($_POST['password'], FILTER_SANITIZE_SPECIAL_CHARS);
+    // Membersihkan input username dan password dari karakter spesial untuk mencegah serangan XSS.
 
     // Validasi input
     if (empty($username) || empty($password)) {
@@ -14,13 +15,15 @@ if (isset($_POST['submit'])) {
                 alert('Username dan password harus diisi!!');
                 window.location.href = '../front_end/login.php';
             </script>";
+            // Jika kosong, memberikan pesan peringatan dan mengarahkan kembali ke halaman login.
+
     } else {
         // Pencocokan username di database
         $query = $conn->prepare("SELECT * FROM users WHERE username = ?");
         $query->bind_param('s', $username);
         $query->execute();
         $result = $query->get_result();
-        $user = $result->fetch_assoc();
+        $user = $result->fetch_assoc(); // Mengambil satu baris hasil sebagai array asosiatif.
 
         if ($user) {
             // Dekripsi password dari database

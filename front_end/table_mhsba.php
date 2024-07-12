@@ -8,7 +8,7 @@ if (!isset($_SESSION['user_id']) || ($_SESSION['role'] !== 'operator')) {
     exit;
 }
 
-// Query untuk mengambil data mahasiswa dari beberapa tabel
+/// Query untuk mengambil data mahasiswa dari beberapa tabel
 $query = $conn->prepare("
     SELECT 
         ba_mahasiswa.id_baitul, 
@@ -25,21 +25,22 @@ $query = $conn->prepare("
     FROM ba_mahasiswa 
     JOIN mahasiswa ON ba_mahasiswa.mahasiswa_id = mahasiswa.mahasiswa_id
     JOIN users ON mahasiswa.user_id = users.user_id
-");
-$query->execute();
-$result = $query->get_result();
+"); 
+// Mempersiapkan query untuk mengambil data mahasiswa dari tabel 'ba_mahasiswa', 'mahasiswa', dan 'users'.
+
+$query->execute(); // Menjalankan query.
+$result = $query->get_result(); // Mengambil hasil query.
 
 $data = [];
-while ($row = $result->fetch_assoc()) {
-    // Dekripsi data sebelum ditambahkan ke array
-    $nama_lengkap = $row['nama_lengkap'];
-    $npm = decryptValueAES192($row['npm'], $secret_key);
-    $program_studi = $row['program_studi'];
-    $fakultas = $row['fakultas'];
-    $angkatan = $row['angkatan'];
-    $semester = $row['semester'];
-    $alamat = decryptValueAES192($row['alamat'], $secret_key);
-    $nomor_hp = decryptValueAES192($row['nomor_hp'], $secret_key);
+while ($row = $result->fetch_assoc()) {// Mengambil setiap baris data dari hasil query.
+    $nama_lengkap = $row['nama_lengkap'];// Mengambil data nama lengkap dari hasil query.
+    $npm = decryptValueAES192($row['npm'], $secret_key);// Mendekripsi data 'npm' menggunakan fungsi decryptValueAES192 dan kunci rahasia.
+    $program_studi = $row['program_studi'];// Mengambil data program studi.
+    $fakultas = $row['fakultas'];// Mengambil data fakultas.
+    $angkatan = $row['angkatan'];// Mengambil data angkatan.
+    $semester = $row['semester'];// Mengambil data semester.
+    $alamat = decryptValueAES192($row['alamat'], $secret_key);// Mendekripsi data 'alamat'.
+    $nomor_hp = decryptValueAES192($row['nomor_hp'], $secret_key);// Mendekripsi data 'nomor_hp'.
 
     $data[] = [
         'nama_lengkap' => $nama_lengkap,
@@ -50,13 +51,12 @@ while ($row = $result->fetch_assoc()) {
         'semester' => $semester,
         'alamat' => $alamat,
         'nomor_hp' => $nomor_hp
-    ];
+    ]; // Menambahkan data yang sudah diambil dan didekripsi ke dalam array $data.
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

@@ -8,7 +8,7 @@ if (!isset($_SESSION['user_id']) || ($_SESSION['role'] !== 'operator')) {
     exit;
 }
 
-// Query untuk mengambil data mahasiswa yang sudah mendaftar kegiatan
+// Query untuk mengambil data mahasiswa yang sudah mendaftar kegiatan  Menyiapkan query untuk proses sistem
 $query = $conn->prepare("
     SELECT 
         u.user_id,  
@@ -21,10 +21,10 @@ $query = $conn->prepare("
     JOIN users u ON m.user_id = u.user_id
     WHERE bm.id_baitul IS NOT NULL
 ");
-$query->execute();
-$result = $query->get_result();
+$query->execute();// Menjalankan query.
+$result = $query->get_result();// Mengambil hasil query.
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && !isset($_POST['delete_id'])) {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && !isset($_POST['delete_id'])) { // Mengecek apakah request adalah POST dan bukan untuk penghapusan data.
     $mahasiswa_id = $_POST['mahasiswa_id'];
     $presensi = encryptValueAES192($_POST['presensi'], $secret_key);
     $baca_tulis_alquran = encryptValueAES192($_POST['baca_tulis_alquran'], $secret_key);
@@ -37,26 +37,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !isset($_POST['delete_id'])) {
         ON DUPLICATE KEY UPDATE 
         presensi=?, baca_tulis_alquran=?, al_islam_kemuh=?, status=?
     ");
-    $stmt->bind_param("issssisss", $mahasiswa_id, $presensi, $baca_tulis_alquran, $al_islam_kemuh, $status, $presensi, $baca_tulis_alquran, $al_islam_kemuh, $status);
-    $stmt->execute();
-    $stmt->close();
+    $stmt->bind_param("issssisss", $mahasiswa_id, $presensi, $baca_tulis_alquran, $al_islam_kemuh, $status, $presensi, $baca_tulis_alquran, $al_islam_kemuh, $status); // Mengikat parameter ke query.
+    $stmt->execute();// Menjalankan query.
+    $stmt->close(); // Menutup statement.
 }
 
 $data = [];
-while ($row = $result->fetch_assoc()) {
+while ($row = $result->fetch_assoc()) { // Mengambil setiap baris data dari hasil query.
     $nama = $row['nama_lengkap'];
     $npm = decryptValueAES192($row['npm'], $secret_key);
     $prodi = $row['program_studi'];
 
-    $nilai_query = $conn->prepare("SELECT * FROM grade_bamhs WHERE mahasiswa_id = ?");
-    $nilai_query->bind_param("i", $row['mahasiswa_id']);
-    $nilai_query->execute();
-    $nilai_result = $nilai_query->get_result()->fetch_assoc();
+    $nilai_query = $conn->prepare("SELECT * FROM grade_bamhs WHERE mahasiswa_id = ?"); // Mempersiapkan query untuk mengambil data nilai mahasiswa berdasarkan mahasiswa_id.
+    $nilai_query->bind_param("i", $row['mahasiswa_id']);    // Mengikat parameter ke query.
+    $nilai_query->execute();// Menjalankan query.
+    $nilai_result = $nilai_query->get_result()->fetch_assoc(); // Menjalankan query.
 
     $presensi = $nilai_result ? decryptValueAES192($nilai_result['presensi'], $secret_key) : '';
     $baca_tulis_alquran = $nilai_result ? decryptValueAES192($nilai_result['baca_tulis_alquran'], $secret_key) : '';
     $al_islam_kemuh = $nilai_result ? decryptValueAES192($nilai_result['al_islam_kemuh'], $secret_key) : '';
-    $status = $nilai_result ? decryptValueAES192($nilai_result['status'], $secret_key) : '';
+    $status = $nilai_result ? decryptValueAES192($nilai_result['status'], $secret_key) : ''; //untuk menjalankan query yang telah dipersiapkan, mengambil hasilnya, dan mengubah hasil tersebut menjadi array asosiatif. Berikut adalah penjelasan rinci dari setiap bagiannya
 
     $data[] = [
         'mahasiswa_id' => $row['mahasiswa_id'],
@@ -130,13 +130,13 @@ while ($row = $result->fetch_assoc()) {
                     <tbody>
                         <?php foreach ($data as $mahasiswa) : ?>
                             <tr>
-                                <td><?= htmlspecialchars($mahasiswa['nama']); ?></td>
-                                <td><?= htmlspecialchars($mahasiswa['npm']); ?></td>
-                                <td><?= htmlspecialchars($mahasiswa['prodi']); ?></td>
-                                <td><?= htmlspecialchars($mahasiswa['presensi']); ?></td>
-                                <td><?= htmlspecialchars($mahasiswa['baca_tulis_alquran']); ?></td>
-                                <td><?= htmlspecialchars($mahasiswa['al_islam_kemuh']); ?></td>
-                                <td><?= htmlspecialchars($mahasiswa['status']); ?></td>
+                                <td><?= ($mahasiswa['nama']); ?></td>
+                                <td><?= ($mahasiswa['npm']); ?></td>
+                                <td><?= ($mahasiswa['prodi']); ?></td>
+                                <td><?= ($mahasiswa['presensi']); ?></td>
+                                <td><?= ($mahasiswa['baca_tulis_alquran']); ?></td>
+                                <td><?= ($mahasiswa['al_islam_kemuh']); ?></td>
+                                <td><?= ($mahasiswa['status']); ?></td>
                                 <td>
                                     <button class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#inputNilaiModal' data-id='<?= htmlspecialchars($mahasiswa['mahasiswa_id']); ?>'>Input Nilai</button>
                                 </td>

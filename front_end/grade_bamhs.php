@@ -73,6 +73,7 @@ while ($row = $result->fetch_assoc()) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -81,78 +82,68 @@ while ($row = $result->fetch_assoc()) {
     <link href="https://cdn.datatables.net/2.0.8/css/dataTables.bootstrap5.css" rel="stylesheet">
     <link rel="shortcut icon" href="../assets/img/umb.png">
     <style>
-        body {
-            background-image: url('../assets/img/umbkampus4.png');
-            background-size: cover;
-            background-attachment: fixed;
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+        
         h2 {
             text-align: center;
             margin-bottom: 20px;
             font-family: 'Times New Roman', Times, serif;
         }
+
         .large-text {
             font-size: 30px;
         }
+
         .table-custom {
             width: 100%;
             margin: 0 auto;
         }
+
         .display-4 {
-            font-weight: bold; 
+            font-weight: bold;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
-        <div class="card mt-5">
-            <div class="card-body py-1">
-                <div class="text-end mt-3">
-                    <a href="ba_operator.php" class="btn btn-primary">Back</a>
-                </div>
-                <div class="container mt-5">
-                    <h2 class="display-4 large-text">Nilai Program Baitul Arqam Mahasiswa</h2>
-                    <h2 class="display-4 large-text">Universitas Muhammadiyah Bengkulu</h2>
-                    <h2 class="display-4 large-text" id="tahun">Tahun</h2>
-                    <div class="data_table px-4">
-                        <table id="table-sb" class="table display nowrep table-custom table-hover table-bordered" style="width:100%">
-                            <thead class="thead-glass">
-                                <tr>
-                                    <th>Nama</th>
-                                    <th>NPM</th>
-                                    <th>Prodi</th>
-                                    <th>Presensi</th>
-                                    <th>Baca Tulis Alquran</th>
-                                    <th>Al Islam Kemuh</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($data as $mahasiswa): ?>
-                                    <tr>
-                                        <td><?= htmlspecialchars($mahasiswa['nama']); ?></td>
-                                        <td><?= htmlspecialchars($mahasiswa['npm']); ?></td>
-                                        <td><?= htmlspecialchars($mahasiswa['prodi']); ?></td>
-                                        <td><?= htmlspecialchars($mahasiswa['presensi']); ?></td>
-                                        <td><?= htmlspecialchars($mahasiswa['baca_tulis_alquran']); ?></td>
-                                        <td><?= htmlspecialchars($mahasiswa['al_islam_kemuh']); ?></td>
-                                        <td><?= htmlspecialchars($mahasiswa['status']); ?></td>
-                                        <td>
-                                            <button class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#inputNilaiModal' data-id='<?= htmlspecialchars($mahasiswa['mahasiswa_id']); ?>'>Input Nilai</button>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </tbody>    
-                        </table>
-                    </div>
-                </div>
+        <div class="text-end mt-3">
+            <a href="ba_operator.php" class="btn btn-primary">Back</a>
+        </div>
+        <div class="container mt-5">
+            <h2 class="display-4 large-text">Nilai Program Baitul Arqam Mahasiswa</h2>
+            <h2 class="display-4 large-text">Universitas Muhammadiyah Bengkulu</h2>
+            <h2 class="display-4 large-text" id="tahun">Tahun</h2>
+            <div class="data_table px-4">
+                <table id="table-sb" class="table display nowrep table-custom table-hover table-bordered" style="width:100%">
+                    <thead class="thead-glass">
+                        <tr>
+                            <th>Nama</th>
+                            <th>NPM</th>
+                            <th>Prodi</th>
+                            <th>Presensi</th>
+                            <th>Baca Tulis Alquran</th>
+                            <th>Al Islam Kemuh</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($data as $mahasiswa) : ?>
+                            <tr>
+                                <td><?= htmlspecialchars($mahasiswa['nama']); ?></td>
+                                <td><?= htmlspecialchars($mahasiswa['npm']); ?></td>
+                                <td><?= htmlspecialchars($mahasiswa['prodi']); ?></td>
+                                <td><?= htmlspecialchars($mahasiswa['presensi']); ?></td>
+                                <td><?= htmlspecialchars($mahasiswa['baca_tulis_alquran']); ?></td>
+                                <td><?= htmlspecialchars($mahasiswa['al_islam_kemuh']); ?></td>
+                                <td><?= htmlspecialchars($mahasiswa['status']); ?></td>
+                                <td>
+                                    <button class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#inputNilaiModal' data-id='<?= htmlspecialchars($mahasiswa['mahasiswa_id']); ?>'>Input Nilai</button>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -201,10 +192,10 @@ while ($row = $result->fetch_assoc()) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/v/bs5/jq-3.7.0/jszip-3.10.1/dt-2.0.8/af-2.7.0/b-3.0.2/b-colvis-3.0.2/b-html5-3.0.2/cr-2.0.3/date-1.5.2/fc-5.0.1/fh-4.0.1/kt-2.12.1/r-3.0.2/rg-1.5.0/rr-1.5.0/sc-2.4.3/sb-1.7.1/sp-2.3.1/sl-2.0.3/sr-1.4.1/datatables.min.js"></script>
-    <script src="./assets/js/datatables.js"></script>
+    <script src="../assets/js/datatables.js"></script>
 
     <script>
-        $('#inputNilaiModal').on('show.bs.modal', function (event) {
+        $('#inputNilaiModal').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget);
             var id = button.data('id');
             var modal = $(this);
@@ -213,4 +204,5 @@ while ($row = $result->fetch_assoc()) {
     </script>
 
 </body>
+
 </html>

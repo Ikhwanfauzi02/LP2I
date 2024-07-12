@@ -40,10 +40,18 @@ if (isset($_SESSION['user_id']) && $_SESSION['role'] === 'admin') {
     <link rel="stylesheet" type="text/css" href="../assets/login/css/util.css">
     <link rel="stylesheet" type="text/css" href="../assets/login/css/main.css">
     <!--===============================================================================================-->
+
+    <link rel="stylesheet" href="../assets/css/loader.css">
     <title>Log In LP2i UM Bengkulu</title>
 </head>
 
 <body style="background-color: #fff;">
+    <section id="preloaderSubmit" class="preloader-submit">
+        <article class="loader"></article>
+    </section>
+    <section id="preloaderLink" class="preloader d-flex">
+        <article class="loader"></article>
+    </section>
 
     <div class="container">
         <div class="limiter py-5 vh-100">
@@ -82,7 +90,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['role'] === 'admin') {
                             </div>
                         </div>
                         <div class="container-login100-form-btn">
-                            <button id="submit" name="submit"class="login100-form-btn">
+                            <button id="submit" name="submit" class="preload-submit login100-form-btn">
                                 Login
                             </button>
                         </div>
@@ -95,6 +103,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['role'] === 'admin') {
     </div>
 
 
+    <script src="../assets/js/loader.js"></script>
     <!--===============================================================================================-->
     <script src="../assets/login/vendor/jquery/jquery-3.2.1.min.js"></script>
     <!--===============================================================================================-->

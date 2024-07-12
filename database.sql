@@ -13,42 +13,13 @@ CREATE TABLE users (
 );
 
 -- Tabel mahasiswa (menyimpan data khusus mahasiswa)
-CCREATE TABLE ba_mahasiswa (
-    id_ba INT AUTO_INCREMENT PRIMARY KEY,
-    mahasiswa_id INT NOT NULL,
-    angkatan VARCHAR(4),
-    semester VARCHAR(2),
-    alamat TEXT,
-    nomor_hp VARCHAR(15),
-    waktu_daftar TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (mahasiswa_id) REFERENCES mahasiswa(mahasiswa_id) ON DELETE CASCADE
-);
-
-
--- Tabel ba_mahasiswa
-CREATE TABLE ba_mahasiswa (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT,
-    npm VARCHAR(20),
-    angkatan VARCHAR(4),
-    semester VARCHAR(2),
-    alamat TEXT,
-    nomor_hp VARCHAR(15),
-    waktu_daftar TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(user_id),
-    FOREIGN KEY (npm) REFERENCES mahasiswa(npm)
-);
-
-
--- Tabel grade_bamhs
-CREATE TABLE grade_bamhs (
-    id_grade INT AUTO_INCREMENT PRIMARY KEY,
-    mahasiswa_id INT NOT NULL,
-    presensi VARCHAR(512),
-    baca_tulis_alquran VARCHAR(512),
-    al_islam_kemuh VARCHAR(512),
-    status VARCHAR(512),
-    FOREIGN KEY (mahasiswa_id) REFERENCES mahasiswa(mahasiswa_id) ON DELETE CASCADE
+CREATE TABLE mahasiswa (
+    mahasiswa_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    npm VARCHAR(512) NOT NULL UNIQUE,
+    program_studi VARCHAR(512) NOT NULL,
+    fakultas VARCHAR(512) NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 );
 
 -- Tabel admin_details
@@ -76,4 +47,28 @@ CREATE TABLE login_logs (
     login_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     logout_time TIMESTAMP NULL,
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+);
+
+-- Tabel ba_mahasiswa (menyimpan data khusus mahasiswa)
+CREATE TABLE ba_mahasiswa (
+    id_baitul INT AUTO_INCREMENT PRIMARY KEY,
+    mahasiswa_id INT NOT NULL,
+    angkatan VARCHAR(4),
+    semester VARCHAR(2),
+    alamat TEXT,
+    nomor_hp VARCHAR(15),
+    waktu_daftar TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (mahasiswa_id) REFERENCES mahasiswa(mahasiswa_id) ON DELETE CASCADE
+);
+
+
+-- Tabel grade_bamhs
+CREATE TABLE grade_bamhs (
+    id_grade INT AUTO_INCREMENT PRIMARY KEY,
+    mahasiswa_id INT NOT NULL,
+    presensi VARCHAR(512),
+    baca_tulis_alquran VARCHAR(512),
+    al_islam_kemuh VARCHAR(512),
+    status VARCHAR(512),
+    FOREIGN KEY (mahasiswa_id) REFERENCES mahasiswa(mahasiswa_id) ON DELETE CASCADE
 );

@@ -56,6 +56,7 @@ while ($row = $result->fetch_assoc()) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -69,60 +70,60 @@ while ($row = $result->fetch_assoc()) {
             margin-bottom: 20px;
             font-family: 'Times New Roman', Times, serif;
         }
+
         .large-text {
             font-size: 30px;
         }
+
         .table-custom {
             width: 100%;
             margin: 0 auto;
         }
+
         .display-4 {
-            font-weight: bold; 
+            font-weight: bold;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
-        <div class="card mt-5">
-            <div class="card-body py-1">
-                <div class="text-end mt-3">
-                    <a href="ba_operator.php" class="btn btn-primary">Back</a>
-                </div>
-                <div class="container mt-5">
-                    <h2 class="display-4 large-text">Nilai Program Baitul Arqam Mahasiswa</h2>
-                    <h2 class="display-4 large-text">Universitas Muhammadiyah Bengkulu</h2>
-                    <h2 class="display-4 large-text" id="tahun">Tahun</h2>
-                    <div class="data_table px-4">
-                        <table id="table-sb" class="table table-bordered display compact" style="width:100%">
-                            <thead>
-                                <tr>
-                                    <th>Nama</th>
-                                    <th>NPM</th>
-                                    <th>Prodi</th>
-                                    <th>Fakultas</th>
-                                    <th>Semester</th>
-                                    <th>Angkatan</th>
-                                    <th>Alamat</th>
-                                    <th>Nomor HP</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($data as $index => $mahasiswa): ?>
-                                    <tr>
-                                        <td><?= ($mahasiswa['nama_lengkap']); ?></td>
-                                        <td><?= ($mahasiswa['npm']); ?></td>
-                                        <td><?= ($mahasiswa['program_studi']); ?></td>
-                                        <td><?= ($mahasiswa['fakultas']); ?></td>
-                                        <td><?= ($mahasiswa['semester']); ?></td>
-                                        <td><?= ($mahasiswa['angkatan']); ?></td>
-                                        <td><?= ($mahasiswa['alamat']); ?></td>
-                                        <td><?= ($mahasiswa['nomor_hp']); ?></td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+        <div class="text-end mt-3">
+            <a href="ba_operator.php" class="btn btn-primary">Back</a>
+        </div>
+        <div class="container mt-5">
+            <h2 class="display-4 large-text">List Program Baitul Arqam Mahasiswa</h2>
+            <h2 class="display-4 large-text">Universitas Muhammadiyah Bengkulu</h2>
+            <h2 class="display-4 large-text" id="tahun">Tahun</h2>
+            <div class="data_table px-4">
+                <table id="table-sb" class="table table-bordered display compact" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Nama</th>
+                            <th>NPM</th>
+                            <th>Prodi</th>
+                            <th>Fakultas</th>
+                            <th>Semester</th>
+                            <th>Angkatan</th>
+                            <th>Alamat</th>
+                            <th>Nomor HP</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($data as $index => $mahasiswa) : ?>
+                            <tr>
+                                <td><?= ($mahasiswa['nama_lengkap']); ?></td>
+                                <td><?= ($mahasiswa['npm']); ?></td>
+                                <td><?= ($mahasiswa['program_studi']); ?></td>
+                                <td><?= ($mahasiswa['fakultas']); ?></td>
+                                <td><?= ($mahasiswa['semester']); ?></td>
+                                <td><?= ($mahasiswa['angkatan']); ?></td>
+                                <td><?= ($mahasiswa['alamat']); ?></td>
+                                <td><?= ($mahasiswa['nomor_hp']); ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -131,4 +132,5 @@ while ($row = $result->fetch_assoc()) {
     <script src="https://cdn.datatables.net/v/bs5/jq-3.7.0/jszip-3.10.1/dt-2.0.8/af-2.7.0/b-3.0.2/b-colvis-3.0.2/b-html5-3.0.2/cr-2.0.3/date-1.5.2/fc-5.0.1/fh-4.0.1/kt-2.12.1/r-3.0.2/rg-1.5.0/rr-1.5.0/sc-2.4.3/sb-1.7.1/sp-2.3.1/sl-2.0.3/sr-1.4.1/datatables.min.js"></script>
     <script src="../assets/js/datatables.js"></script>
 </body>
+
 </html>

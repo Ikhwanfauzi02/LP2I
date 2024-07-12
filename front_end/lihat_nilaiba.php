@@ -73,7 +73,7 @@ $footer = '../components/footer_mahasiswa.html';
         - #SERVICE
     -->
 
-            <section class="section service" id="service" aria-label="service">
+            <section class="section service" style="min-height: 100vh;" id="service" aria-label="service">
                 <div class="container">
 
                     <p class="section-subtitle has-before text-center">Nilai Baitul Arqam</p>

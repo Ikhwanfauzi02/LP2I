@@ -19,27 +19,36 @@ const addEventOnElem = function (elem, type, callback) {
 
 
 /**
- * navbar toggle
+ * navbar toggle 
  */
+document.addEventListener('DOMContentLoaded', function() {
+  // Handle click event to toggle dropdown menu
+  document.querySelectorAll('.dropdown-toggle').forEach(function(dropdownToggle) {
+      dropdownToggle.addEventListener('click', function(e) {
+          e.preventDefault();
+          let parentDropdown = this.parentElement;
+          if (parentDropdown.classList.contains('active')) {
+              parentDropdown.classList.remove('active');
+          } else {
+              // Close all other dropdowns
+              document.querySelectorAll('.dropdown.active').forEach(function(activeDropdown) {
+                  activeDropdown.classList.remove('active');
+              });
+              // Open clicked dropdown
+              parentDropdown.classList.add('active');
+          }
+      });
+  });
 
-const navbar = document.querySelector("[data-navbar]");
-const navTogglers = document.querySelectorAll("[data-nav-toggler]");
-const navbarLinks = document.querySelectorAll("[data-nav-link]");
-const overlay = document.querySelector("[data-overlay]");
-
-const toggleNavbar = function () {
-  navbar.classList.toggle("active");
-  overlay.classList.toggle("active");
-}
-
-addEventOnElem(navTogglers, "click", toggleNavbar);
-
-const closeNavbar = function () {
-  navbar.classList.remove("active");
-  overlay.classList.remove("active");
-}
-
-addEventOnElem(navbarLinks, "click", closeNavbar);
+  // Close dropdown if click outside of it
+  document.addEventListener('click', function(e) {
+      if (!e.target.closest('.dropdown')) {
+          document.querySelectorAll('.dropdown.active').forEach(function(activeDropdown) {
+              activeDropdown.classList.remove('active');
+          });
+      }
+  });
+});
 
 
 

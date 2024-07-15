@@ -455,13 +455,27 @@ body {
   margin-top: 5px;
   list-style: none;
   z-index: 1000;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-  min-width: 200px; 
-  font-size: 16px; 
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+  min-width: 250px; /* Lebar kotak submenu diperbesar */
+  font-size: 16px;
+  transform: translateY(-10px); /* Initial state for slide down animation */
 }
 
 .dropdown-menu li {
   padding: 10px 20px; 
+  position: relative; /* Necessary for positioning arrow */
+  transition: background-color 0.3s ease, padding-left 0.3s ease; /* Transition for hover effect */
+  font-family: 'Open Sans', sans-serif; /* Menambahkan font Open Sans */
+}
+
+.dropdown-menu li::before {
+  content: "\2192"; /* Mengganti dengan panah kanan */
+  position: absolute;
+  left: -20px; /* Mengatur posisi panah */
+  top: 50%;
+  transform: translateY(-50%);
+  transition: color 0.3s ease, transform 0.3s ease; /* Transition for hover effect */
+  color: transparent; /* Initial state */
 }
 
 .dropdown-menu li a {
@@ -471,26 +485,60 @@ body {
 }
 
 .dropdown-menu li:hover {
-  background-color: #f1f1f1;
+  background-color: #EDF4F2; /* Warna hijau muda */
+  padding-left: 30px; /* Shift text to right when hovered */
 }
 
-.dropdown:hover .dropdown-menu,
+.dropdown-menu li:hover::before {
+  color: #005B4C; /* Warna hijau tua */
+  transform: translateY(-50%) translateX(5px); /* Move arrow to right when hovered */
+}
+
 .dropdown.active .dropdown-menu {
   display: block;
   opacity: 1;
   visibility: visible;
+  transform: translateY(0); /* Final state for slide down animation */
+  max-height: 500px; /* Adjust based on content height */
 }
 
+/* Scroll down/up animation */
+.dropdown-menu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.dropdown.active .dropdown-menu {
+  max-height: 500px; /* Adjust based on content height */
+}
+
+/* Header column */
 .header-column {
   display: flex;
   align-items: center;
 }
 
+/* Wrapper */
 .wrapper {
   display: flex;
   align-items: center;
 }
 
+/* Responsive styles */
+@media (max-width: 768px) {
+  .navbar-list {
+    flex-direction: column;
+  }
+  
+  .navbar-item {
+    width: 100%;
+  }
+  
+  .dropdown-menu {
+    min-width: 100%;
+  }
+}
 
 
 /*-----------------------------------*\

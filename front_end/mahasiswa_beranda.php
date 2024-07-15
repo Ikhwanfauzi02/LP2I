@@ -129,13 +129,10 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'mahasiswa') {
                 </div>
             </div>
             <button class="nav-open-btn" aria-label="open menu" aria-hidden="true" data-nav-toggler>
-            <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
-        </button>
+                <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+            </button>
         </nav>
     </header>
-
-
-
     <main>
         <article>
 

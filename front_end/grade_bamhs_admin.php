@@ -81,17 +81,6 @@ while ($row = $result->fetch_assoc()) {
     <link href="https://cdn.datatables.net/2.0.8/css/dataTables.bootstrap5.css" rel="stylesheet">
     <link rel="shortcut icon" href=".7 ./assets/img/umb.png">
     <style>
-        body {
-            background-image: url('../assets/img/umbkampus4.png');
-            background-size: cover;
-            background-attachment: fixed;
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
         h2 {
             text-align: center;
             margin-bottom: 20px;
@@ -112,8 +101,6 @@ while ($row = $result->fetch_assoc()) {
 </head>
 <body>
     <div class="container">
-        <div class="card mt-5">
-            <div class="card-body py-1">
                 <div class="text-end mt-3">
                     <a href="ba_admin.php" class="btn btn-primary">Back</a>
                 </div>
@@ -158,8 +145,6 @@ while ($row = $result->fetch_assoc()) {
                         </table>
                     </div>
                 </div>
-            </div>
-        </div>
     </div>
 
     <!-- Modal -->

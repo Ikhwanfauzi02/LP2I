@@ -1,0 +1,117 @@
+<header class="header" data-header>
+    <nav class="container d-flex justify-content-between align-items-center">
+        <!-- Kolom Pertama: Logo LPPI-UMB -->
+        <div class="header-column">
+            <h2 style="color: black;">LPPI-UMB</h2>
+        </div>
+
+        <!-- Kolom Kedua: Navigasi -->
+        <nav class="navbar header-column" data-navbar>
+            <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+                <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+            </button>
+            <ul class="navbar-list d-flex align-items-center">
+                <li class="navbar-item">
+                    <a href="../front_end/admin_beranda.php" class="navbar-link" data-nav-link>Home</a>
+                </li>
+                <li class="navbar-item dropdown">
+                    <a href="#" class="navbar-link dropdown-toggle" data-nav-link>Baitul Arqam</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Sop Kegiatan</a></li>
+                        <li><a href="../front_end/table_mhsba_admin.php">List Mahasiswa</a></li>
+                        <li><a href="../front_end/grade_bamhs_admin.php">Input Nilai</a></li>
+                        <li><a href="#">Lihat Jadwal</a></li>
+                    </ul>
+                </li>
+                <li class="navbar-item dropdown">
+                    <a href="#" class="navbar-link dropdown-toggle" data-nav-link>BBA</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Submenu 1</a></li>
+                        <li><a href="#">Submenu 2</a></li>
+                        <li><a href="#">Submenu 3</a></li>
+                    </ul>
+                </li>
+                <li class="navbar-item dropdown">
+                    <a href="#" class="navbar-link dropdown-toggle" data-nav-link>Mentoring</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Submenu 1</a></li>
+                        <li><a href="#">Submenu 2</a></li>
+                        <li><a href="#">Submenu 3</a></li>
+                    </ul>
+                </li>
+                <li class="navbar-item dropdown">
+                    <a href="#" class="navbar-link dropdown-toggle" data-nav-link>DAD</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Submenu 1</a></li>
+                        <li><a href="#">Submenu 2</a></li>
+                        <li><a href="#">Submenu 3</a></li>
+                    </ul>
+                </li>
+            </ul>       
+        </nav>
+
+        <!-- Kolom Ketiga: Akun/Tombol Dropdown -->
+        <div class="">
+            <div class="profile-dropdown" onclick="toggle()">
+                <div class="profile-dropdown-btn">
+                    <span>
+                        <?= $nama_lengkap; ?>
+                        <i class="fa-solid fa-angle-down"></i>
+                    </span>
+                    <ul class="profile-dropdown-list">
+                        <li class="profile-dropdown-list-item">
+                            <a href="#">
+                                <i class="fa-regular fa-user"></i>
+                                Level : <?= $_SESSION['role']; ?>
+                            </a>
+                        </li>
+
+                        <li class="profile-dropdown-list-item">
+                            <a href="../front_end/view_users.php">
+                            <i class="fa-regular fa-envelope"></i>
+                            Data Users
+                            </a>
+                        </li>
+        
+                        <li class="profile-dropdown-list-item">
+                            <a href="../front_end/register.php">
+                            <i class="fa-regular fa-user"></i>
+                            Add User
+                            </a>
+                        </li>
+
+                        <li class="profile-dropdown-list-item">
+                            <a href="#">
+                                <i class="fa-regular fa-envelope"></i>
+                                Announcement
+                            </a>
+                        </li>
+                        <li class="profile-dropdown-list-item">
+                            <a href="../front_end/ganti_password.php">
+                                <i class="fa-solid fa-sliders"></i>
+                                Change Password
+                            </a>
+                        </li>
+                        <li class="profile-dropdown-list-item">
+                            <a href="#">
+                                <i class="fa-regular fa-circle-question"></i>
+                                Help & Support
+                            </a>
+                        </li>
+                        <hr />
+                        <li class="profile-dropdown-list-item">
+                            <a href="../back_end/logout.php">
+                                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                Log Out
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+            <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+        </button>
+    </nav>
+
+</header>

@@ -48,7 +48,7 @@ while ($row = $result->fetch_assoc()) { // Mengambil setiap baris data dari hasi
     $npm = decryptValueAES192($row['npm'], $secret_key);
     $prodi = $row['program_studi'];
 
-    $nilai_query = $conn->prepare("SELECT * FROM grade_bamhs WHERE mahasiswa_id = ?"); // Mempersiapkan query untuk mengambil data nilai mahasiswa berdasarkan mahasiswa_id.
+    $nilai_query = $conn->prepare("SELECT * FROM grade_bamhs WHERE mahasiswa_id = ?"); 
     $nilai_query->bind_param("i", $row['mahasiswa_id']);    // Mengikat parameter ke query.
     $nilai_query->execute();// Menjalankan query.
     $nilai_result = $nilai_query->get_result()->fetch_assoc(); // Menjalankan query.

@@ -16,52 +16,8 @@ if (!isset($_SESSION['user_id']) || ($_SESSION['role'] !== 'mahasiswa')) {
         <title>Registration Form</title>
         <link rel="stylesheet" href="../assets/css/formdaftar.css">
 
-    <style>
-        body {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 10px;
-            background: url('../assets/img/umbkampus4.png');
-            background-size: cover;
-            }
-
-        .button1 {
-            width: 100%;
-            padding: 15px;
-            background-color: #9b59b6; /* Warna biru */
-            color: white; /* Warna teks putih */
-            border: none;
-            border-radius: 5px; /* Sudut rounded */
-            font-size: 16px;
-            cursor: pointer; /* Ganti cursor saat hover */
-            transition: background-color 0.3s ease; /* Animasi transisi */
-            margin-top: 20px; /* Margin atas */
-        }
-
-        button:hover {
-            background-color: #833f9e; /* Warna biru lebih gelap saat hover */
-        }
-        .button2 {
-            width: 20%; /* Atur lebar menjadi 100% agar sesuai dengan lebar form */
-            padding: 10px;
-            background-color: #9b59b6; /* Warna biru */
-            color: white; /* Warna teks putih */
-            border: none;
-            border-radius: 5px; /* Sudut rounded */
-            font-size: 16px;
-            cursor: pointer; /* Ganti cursor saat hover */
-            transition: background-color 0.3s ease; /* Animasi transisi */
-            margin-top: 20px; /* Margin atas */
-            margin-bottom: 20px; /* Margin bawah */
-        }
-        .button2:hover {
-            background-color: #833f9e; /* Warna biru lebih gelap saat hover */
-        }
-    </style>    
-    </head>
-    <body>
+</head>
+<body>
     <div class="container">
         <button class="button2" onclick="window.location.href='../front_end/ba_mahasiswa.php'">Kembali</button>
         <div class="title">Registration Form</div>

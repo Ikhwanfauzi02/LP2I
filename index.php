@@ -35,74 +35,61 @@ if (isset($_SESSION['user_id']) && $_SESSION['role'] === 'admin') {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 
-    <!--
-    - preload img
-    -->
-    <link rel="preload" as="image" href="./assets/img/.png">
 
 </head>
 
 <body id="top">
 
-    <!--
-    - #HEADER
-    -->
-
+    <!--- #HEADER-->
     <header class="header" data-header>
-        <div class="container">
+        <nav class="container d-flex justify-content-between align-items-center">
+            <!-- Kolom Pertama: Logo LPPI-UMB -->
+            <div class="header-column">
+                <h2 style="color: black;">LPPI-UMB</h2>
+            </div>
 
-            <a href="#" class="logo">LPPI-UMB</a>
-
-            <nav class="navbar" data-navbar>
-
-                <div class="wrapper">
-                    <a href="#" class="logo">LPPI-UMB</a>
-
-                    <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
-                        <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
-                    </button>
-                </div>
-
-                <ul class="navbar-list">
-
+            <!-- Kolom Kedua: Navigasi -->
+            <nav class="navbar header-column" data-navbar>
+                <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+                    <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+                </button>
+                <ul class="navbar-list d-flex align-items-center">
                     <li class="navbar-item">
                         <a href="#home" class="navbar-link" data-nav-link>Beranda</a>
                     </li>
-
-                    <li class="navbar-item">
-                        <a href="" class="navbar-link" data-nav-link>Profil</a>
+                    <li class="navbar-item dropdown">
+                        <a href="#" class="navbar-link dropdown-toggle" data-nav-link>Profil</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Sejarah</a></li>
+                            <li><a href="#">Visi</a></li>
+                            <li><a href="#">Misi</a></li>
+                        </ul>
                     </li>
-
                     <li class="navbar-item">
                         <a href="#service" class="navbar-link" data-nav-link>Program</a>
                     </li>
-
                     <li class="navbar-item">
                         <a href="#blog" class="navbar-link" data-nav-link>Berita</a>
                     </li>
-
                     <li class="navbar-item">
-                        <a href="#blog" class="navbar-link" data-nav-link>Download</a>
+                        <a href="#download" class="navbar-link" data-nav-link>Download</a>
                     </li>
-
                     <li class="navbar-item">
                         <a href="https://umb.ac.id/" class="navbar-link" data-nav-link>UMB Web</a>
                     </li>
                 </ul>
-
             </nav>
 
+            <!-- Kolom Ketiga: Akun/Tombol Sign In -->
+            <div class="">
+                <a href="front_end/login.php" class="btn btn-primary has-before has-after">Sign In</a>
+            </div>
             <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
                 <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
             </button>
-
-            <a href="front_end/login.php" class="btn btn-primary has-before has-after">Sign In</a>
-
             <div class="overlay" data-nav-toggler data-overlay></div>
-
-        </div>
+        </nav>
     </header>
-
 
 
 

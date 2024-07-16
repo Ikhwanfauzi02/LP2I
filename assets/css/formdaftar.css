@@ -6,6 +6,16 @@
   font-family: 'Poppins',sans-serif;
 }
 
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background-color: whitesmoke;
+  background-size: cover;
+  }
+
 .container{
   max-width: 700px;
   width: 100%;
@@ -27,7 +37,7 @@
   height: 3px;
   width: 30px;
   border-radius: 5px;
-  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  background: linear-gradient(135deg, #71b7e6, #7bbd69e1);
 }
 .content form .user-details{
   display: flex;
@@ -57,7 +67,7 @@ form .input-box span.details{
 }
 .user-details .input-box input:focus,
 .user-details .input-box input:valid{
-  border-color: #9b59b6;
+  border-color: #7bbd69e1;
 }
  form .gender-details .gender-title{
   font-size: 20px;
@@ -92,6 +102,40 @@ form .input-box span.details{
  form input[type="radio"]{
    display: none;
  }
+
+ .button1 {
+  width: 100%;
+  padding: 15px;
+  background-color: #7bbd69e1; /* Warna biru */
+  color: white; /* Warna teks putih */
+  border: none;
+  border-radius: 5px; /* Sudut rounded */
+  font-size: 16px;
+  cursor: pointer; /* Ganti cursor saat hover */
+  transition: background-color 0.3s ease; /* Animasi transisi */
+  margin-top: 20px; /* Margin atas */
+}
+
+button:hover {
+  background-color: #a3c499e1; /* Warna biru lebih gelap saat hover */
+}
+.button2 {
+  width: 20%; /* Atur lebar menjadi 100% agar sesuai dengan lebar form */
+  padding: 10px;
+  background-color: #7bbd69e1; /* Warna biru */
+  color: white; /* Warna teks putih */
+  border: none;
+  border-radius: 5px; /* Sudut rounded */
+  font-size: 16px;
+  cursor: pointer; /* Ganti cursor saat hover */
+  transition: background-color 0.3s ease; /* Animasi transisi */
+  margin-top: 20px; /* Margin atas */
+  margin-bottom: 20px; /* Margin bawah */
+}
+.button2:hover {
+  background-color: #a3c499e1; /* Warna biru lebih gelap saat hover */
+}
+
  form .button{
    height: 45px;
    margin: 35px 0

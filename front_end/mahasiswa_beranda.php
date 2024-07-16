@@ -45,11 +45,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'mahasiswa') {
 </head>
 
 <body id="top">
-
-    <!--
-    - #HEADER
-    -->
-
+    <!--- #HEADER-->
     <header class="header" data-header>
         <nav class="container d-flex justify-content-between align-items-center">
 
@@ -76,7 +72,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'mahasiswa') {
                         <a href="#service" class="navbar-link" data-nav-link>Program</a>
                     </li>
                     <li class="navbar-item">
-                        <a href="#blog" class="navbar-link" data-nav-link>Konsultasi</a>
+                        <a href="#" class="navbar-link" data-nav-link>Konsultasi</a>
                     </li>
                     <li class="navbar-item">
                         <a href="https://umb.ac.id/" class="navbar-link" data-nav-link>UMB Web</a>
@@ -133,13 +129,10 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'mahasiswa') {
             </button>
         </nav>
     </header>
+
     <main>
         <article>
-
-            <!--
-        - #HERO
-    -->
-
+            <!--- #HERO-->
             <section class="section hero" id="home" aria-label="hero">
                 <div class="container">
 
@@ -330,10 +323,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'mahasiswa') {
 
 
 
-            <!--
-        - #BLOG
-    -->
-
+            <!--- #BLOG-->
             <section class="section blog" id="blog" aria-label="blog">
                 <div class="container">
 

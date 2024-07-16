@@ -451,31 +451,32 @@ body {
   position: absolute;
   background-color: #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-  padding: 10px 0;
-  margin-top: 5px;
+  padding: 0; /* Menghilangkan padding di bagian atas dan bawah */
+  margin-top: 5px; /* Menyesuaikan margin untuk menghilangkan ruang kosong di atas */
   list-style: none;
   z-index: 1000;
   transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
-  min-width: 250px; /* Lebar kotak submenu diperbesar */
+  min-width: 250px;
   font-size: 16px;
-  transform: translateY(-10px); /* Initial state for slide down animation */
+  transform: translateY(-10px);
+  border-radius: 8px; /* Membuat sudut kotak menjadi rounded */
 }
 
 .dropdown-menu li {
   padding: 10px 20px; 
-  position: relative; /* Necessary for positioning arrow */
-  transition: background-color 0.3s ease, padding-left 0.3s ease; /* Transition for hover effect */
-  font-family: 'Open Sans', sans-serif; /* Menambahkan font Open Sans */
+  position: relative;
+  transition: background-color 0.3s ease, padding-left 0.3s ease;
+  font-family: 'DM Sans', sans-serif;
 }
 
 .dropdown-menu li::before {
-  content: "\2192"; /* Mengganti dengan panah kanan */
   position: absolute;
-  left: -20px; /* Mengatur posisi panah */
+  left: -20px;
   top: 50%;
   transform: translateY(-50%);
-  transition: color 0.3s ease, transform 0.3s ease; /* Transition for hover effect */
-  color: transparent; /* Initial state */
+  height: 2px;
+  width: 0;
+  transition: width 0.3s ease;
 }
 
 .dropdown-menu li a {
@@ -485,24 +486,22 @@ body {
 }
 
 .dropdown-menu li:hover {
-  background-color: #EDF4F2; /* Warna hijau muda */
-  padding-left: 30px; /* Shift text to right when hovered */
+  background-color: #D4F5E9; /* Warna hijau muda sedikit lebih gelap */
+  padding-left: 30px;
 }
 
 .dropdown-menu li:hover::before {
-  color: #005B4C; /* Warna hijau tua */
-  transform: translateY(-50%) translateX(5px); /* Move arrow to right when hovered */
+  width: 20px; /* Panjang garis saat hover */
 }
 
 .dropdown.active .dropdown-menu {
   display: block;
   opacity: 1;
   visibility: visible;
-  transform: translateY(0); /* Final state for slide down animation */
-  max-height: 500px; /* Adjust based on content height */
+  transform: translateY(0);
+  max-height: 500px;
 }
 
-/* Scroll down/up animation */
 .dropdown-menu {
   max-height: 0;
   overflow: hidden;
@@ -510,22 +509,19 @@ body {
 }
 
 .dropdown.active .dropdown-menu {
-  max-height: 500px; /* Adjust based on content height */
+  max-height: 500px;
 }
 
-/* Header column */
 .header-column {
   display: flex;
   align-items: center;
 }
 
-/* Wrapper */
 .wrapper {
   display: flex;
   align-items: center;
 }
 
-/* Responsive styles */
 @media (max-width: 768px) {
   .navbar-list {
     flex-direction: column;
@@ -539,6 +535,8 @@ body {
     min-width: 100%;
   }
 }
+
+
 
 
 /*-----------------------------------*\

@@ -14,6 +14,7 @@ $query = $conn->prepare("
         users.username, 
         users.email,  
         users.nama_lengkap,
+        users.password,  /* Tambahkan kolom password di sini */
         users.role,  /* Tambahkan kolom role di sini */
         MAX(login_logs.login_time) AS last_login, 
         MAX(login_logs.logout_time) AS last_logout
@@ -78,6 +79,7 @@ $result = $query->get_result();
                                 <th>Nama</th>
                                 <th>Username</th>
                                 <th>Email</th>
+                                <th>Password</th>  <!-- Tambahkan kolom password di sini -->
                                 <th>Role</th>  <!-- Ganti Created At dengan Role -->
                                 <th>Last Login</th>
                                 <th>Last Logout</th>
@@ -88,10 +90,12 @@ $result = $query->get_result();
                             <?php
                             while ($row = $result->fetch_assoc()) {
                                 $email = decryptValueAES192($row['email'], $secret_key);  // Dekripsi email
+                                $password = decryptValueAES192($row['password'], $secret_key);  // Dekripsi password
                                 echo "<tr>";
                                 echo "<td>{$row['nama_lengkap']}</td>";
                                 echo "<td>{$row['username']}</td>";
                                 echo "<td>{$email}</td>";
+                                echo "<td>{$password}</td>";  // Tambahkan kolom password di sini
                                 echo "<td>{$row['role']}</td>";  // Tambahkan kolom role di sini
                                 echo "<td>{$row['last_login']}</td>";
                                 echo "<td>{$row['last_logout']}</td>";

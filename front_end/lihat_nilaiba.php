@@ -76,10 +76,6 @@ $footer = '../components/footer_mahasiswa.html';
     <!-- Navbar -->
     <main>
         <article>
-            <!--
-        - #SERVICE
-    -->
-
             <section class="section service" style="min-height: 100vh;" id="service" aria-label="service">
                 <div class="container">
 
@@ -96,27 +92,27 @@ $footer = '../components/footer_mahasiswa.html';
                             <?php if (!empty($data)) : ?>
                                 <tr>
                                     <td>Nama</td>
-                                    <td><?= htmlspecialchars($data['nama_lengkap']); ?></td>
+                                    <td><?= ($data['nama_lengkap']); ?></td>
                                 </tr>
                                 <tr>
                                     <td>NPM</td>
-                                    <td><?= htmlspecialchars($data['npm']); ?></td>
+                                    <td><?= ($data['npm']); ?></td>
                                 </tr>
                                 <tr>
                                     <td>Presensi</td>
-                                    <td><?= htmlspecialchars($data['presensi']); ?></td>
+                                    <td><?= ($data['presensi']); ?></td>
                                 </tr>
                                 <tr>
                                     <td>Baca Tulis Al Qur'an</td>
-                                    <td><?= htmlspecialchars($data['baca_tulis_alquran']); ?></td>
+                                    <td><?= ($data['baca_tulis_alquran']); ?></td>
                                 </tr>
                                 <tr>
                                     <td>Al Islam Kemuh</td>
-                                    <td><?= htmlspecialchars($data['al_islam_kemuh']); ?></td>
+                                    <td><?= ($data['al_islam_kemuh']); ?></td>
                                 </tr>
                                 <tr>
                                     <td>Status Kelulusan</td>
-                                    <td><?= htmlspecialchars($data['status']); ?></td>
+                                    <td><?= ($data['status']); ?></td>
                                 </tr>
                                 <tr>
                                     <td>Keterangan</td>

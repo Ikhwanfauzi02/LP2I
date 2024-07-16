@@ -124,7 +124,7 @@ $footer = '../components/footer_mahasiswa.html';
                                 </div>
 
                                 <h3 class="h3">
-                                    <a href="formdaftarba_mhs.php" class="card-title">Daftar Mahasiswa Baru Baitul Arqom (BA)</a>
+                                    <a href="../front_end/formdaftarba_mhs.php" class="card-title">Daftar Mahasiswa Baru Baitul Arqom (BA)</a>
                                 </h3>
 
                             </div>
